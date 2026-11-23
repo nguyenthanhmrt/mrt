@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kho Dự Án Công Nghệ | Nguyễn Thanh — MRT SYSTEM</title>
-  <meta name="description" content="Danh mục các dự án AI, Trợ lý ảo 3D Hologram MRT SYSTEM, ứng dụng Android WeatherIsland, Gemini Android Chat và giải pháp công nghệ do Nguyễn Thanh (0918499779) phát triển." />
+  <meta name="description" content="Danh mục các dự án AI, Trợ lý ảo 3D Hologram MRT SYSTEM, DrowsyGuard AI phát hiện buồn ngủ, Trợ Lý Việt Android, WeatherIsland MRT và giải pháp công nghệ do Nguyễn Thanh (0918499779) phát triển." />
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -104,7 +104,7 @@
       <!-- Category Filter Tabs -->
       <div class="flex flex-wrap justify-center gap-2 mt-8" id="filter-tabs">
         <button data-filter="all" class="tab-btn px-4 py-2 rounded-xl text-xs font-semibold bg-cyan-500 text-slate-950 shadow-lg shadow-cyan-500/25 transition">
-          Tất cả (4)
+          Tất cả (6)
         </button>
         <button data-filter="windows-ai" class="tab-btn px-4 py-2 rounded-xl text-xs font-semibold bg-white/10 text-slate-200 hover:bg-white/15 border border-white/10 transition">
           <i class="fa-brands fa-windows mr-1.5 text-cyan-400"></i>Windows AI
@@ -219,28 +219,82 @@
 
     <!-- OTHER GITHUB PROJECTS GRID -->
     <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <!-- Project 2: WeatherIsland -->
-      <article class="project-item liquid-card rounded-2xl p-6 flex flex-col justify-between" data-cat="android">
+      <!-- Project 2: DrowsyGuard -->
+      <article class="project-item liquid-card rounded-2xl p-6 flex flex-col justify-between border-rose-400/25" data-cat="android windows-ai">
         <div>
           <div class="flex items-center justify-between mb-4">
-            <span class="px-2.5 py-1 rounded-md text-[11px] font-semibold bg-emerald-500/15 text-emerald-300 border border-emerald-400/25">
-              <i class="fa-brands fa-android mr-1"></i>Android App
+            <span class="px-2.5 py-1 rounded-md text-[11px] font-semibold bg-rose-500/15 text-rose-300 border border-rose-400/30">
+              <i class="fa-solid fa-eye mr-1"></i>AI Vision • Mới 2026
             </span>
-            <span class="text-xs font-mono text-slate-400">Kotlin / Gradle</span>
+            <span class="text-xs font-mono text-slate-400">Kotlin / ML Kit / PC</span>
           </div>
-          <h3 class="text-xl font-bold text-white mb-2">WeatherIsland</h3>
+          <h3 class="text-xl font-bold text-white mb-2">DrowsyGuard — AI Phát Hiện Buồn Ngủ</h3>
           <p class="text-sm text-slate-300 leading-relaxed mb-4">
-            Ứng dụng dự báo thời tiết thế hệ mới trên Android kết hợp giao diện nổi phong cách <strong>Dynamic Island</strong> mượt mà, cập nhật nhiệt độ và cảnh báo thời tiết trực quan ngay trên thanh trạng thái.
+            Ứng dụng Android phát hiện trạng thái buồn ngủ thời gian thực trên thiết bị (on-device) bằng <strong>CameraX &amp; ML Kit Face Detection</strong>, kèm bản <strong>Windows Multi-Cam</strong> giám sát và stream từ xa.
           </p>
           <ul class="space-y-1.5 text-xs text-slate-300 mb-5">
-            <li><i class="fa-solid fa-check text-emerald-400 mr-2"></i>Giao diện Dynamic Island nổi tương tác nhanh</li>
-            <li><i class="fa-solid fa-check text-emerald-400 mr-2"></i>Xây dựng thuần Kotlin & kiến trúc Android hiện đại</li>
-            <li><i class="fa-solid fa-check text-emerald-400 mr-2"></i>Hỗ trợ công cụ kích hoạt & tối ưu hóa pin</li>
+            <li><i class="fa-solid fa-check text-rose-400 mr-2"></i>Phát hiện nhắm mắt kéo dài (microsleep), gục đầu (pitch/roll/yaw) &amp; chỉ số PERCLOS 30s</li>
+            <li><i class="fa-solid fa-check text-rose-400 mr-2"></i>Camera HUD trực quan (FPS, mắt, khung mặt) &amp; cảnh báo âm thanh + rung tức thì</li>
+            <li><i class="fa-solid fa-check text-rose-400 mr-2"></i>Stream MJPEG HTTP/UDP/USB/4G-5G kết nối phần mềm DrowsyGuard Windows đa camera</li>
           </ul>
         </div>
         <div class="pt-4 border-t border-white/10 flex items-center justify-between">
-          <span class="text-[11px] font-mono text-slate-400">Repo: weather-island</span>
-          <a href="https://github.com/tiktoknguyenthanh952-svg/weather-island" target="_blank" rel="noreferrer" class="text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition">
+          <span class="text-[11px] font-mono text-slate-400">Repo: DrowsyGuard (Public)</span>
+          <a href="https://github.com/tiktoknguyenthanh952-svg/DrowsyGuard" target="_blank" rel="noreferrer" class="text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition">
+            Xem GitHub <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
+          </a>
+        </div>
+      </article>
+
+      <!-- Project 3: Trợ Lý Việt -->
+      <article class="project-item liquid-card rounded-2xl p-6 flex flex-col justify-between border-amber-400/25" data-cat="android">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="px-2.5 py-1 rounded-md text-[11px] font-semibold bg-amber-500/15 text-amber-300 border border-amber-400/30">
+              <i class="fa-solid fa-microphone-lines mr-1"></i>Android AI • Mới 2026
+            </span>
+            <span class="text-xs font-mono text-slate-400">Kotlin / Compose / AI</span>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">Trợ Lý Việt — AI Giọng Nói Tiếng Việt</h3>
+          <p class="text-sm text-slate-300 leading-relaxed mb-4">
+            Trợ lý giọng nói AI tiếng Việt cho Android tích hợp <strong>Gemini / OpenAI</strong>, điều khiển máy tức thì 0ms, <strong>giọng Miền Tây &amp; Clone giọng miễn phí</strong>, giao diện Kính lỏng và an toàn 100% với app ngân hàng.
+          </p>
+          <ul class="space-y-1.5 text-xs text-slate-300 mb-5">
+            <li><i class="fa-solid fa-check text-amber-400 mr-2"></i>Điều khiển điện thoại 0ms (mở app, đèn pin, Wi-Fi/4G, gọi, chỉ đường) không cần Accessibility</li>
+            <li><i class="fa-solid fa-check text-amber-400 mr-2"></i>Tự đo độ trễ chọn model Gemini nhanh nhất, dạy lệnh tắt &amp; trí nhớ lâu dài</li>
+            <li><i class="fa-solid fa-check text-amber-400 mr-2"></i>Clone giọng miễn phí (Colab T4 / Local PC), Circle Bar (Gemini Live, Dịch màn hình)</li>
+          </ul>
+        </div>
+        <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+          <span class="text-[11px] font-mono text-slate-400">Repo: trolyviet (Public)</span>
+          <a href="https://github.com/tiktoknguyenthanh952-svg/trolyviet" target="_blank" rel="noreferrer" class="text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition">
+            Xem GitHub <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
+          </a>
+        </div>
+      </article>
+
+      <!-- Project 4: WeatherIsland MRT -->
+      <article class="project-item liquid-card rounded-2xl p-6 flex flex-col justify-between" data-cat="android web">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="px-2.5 py-1 rounded-md text-[11px] font-semibold bg-emerald-500/15 text-emerald-300 border border-emerald-400/25">
+              <i class="fa-brands fa-android mr-1"></i>Android &amp; Cloud • v1.0
+            </span>
+            <span class="text-xs font-mono text-slate-400">Kotlin / Workers</span>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">WeatherIsland MRT v1.0</h3>
+          <p class="text-sm text-slate-300 leading-relaxed mb-4">
+            Ứng dụng thời tiết phong cách <strong>Dynamic Island</strong> mượt mà trên Android, đi kèm hệ thống <strong>Web kích hoạt bản quyền tự động</strong> qua VietQR &amp; SePay chạy trên Cloudflare Workers + KV.
+          </p>
+          <ul class="space-y-1.5 text-xs text-slate-300 mb-5">
+            <li><i class="fa-solid fa-check text-emerald-400 mr-2"></i>Giao diện Dynamic Island nổi trực quan ngay trên thanh trạng thái</li>
+            <li><i class="fa-solid fa-check text-emerald-400 mr-2"></i>Xây dựng thuần Kotlin, kiến trúc Android hiện đại &amp; tối ưu hóa pin</li>
+            <li><i class="fa-solid fa-check text-emerald-400 mr-2"></i>Tự tạo mã VietQR &amp; kích hoạt tự động trong ~5 giây qua Cloudflare Workers</li>
+          </ul>
+        </div>
+        <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+          <span class="text-[11px] font-mono text-slate-400">Repo: WeatherIsland</span>
+          <a href="https://github.com/tiktoknguyenthanh952-svg/WeatherIsland" target="_blank" rel="noreferrer" class="text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition">
             Chi tiết <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
           </a>
         </div>
@@ -335,7 +389,8 @@
             : 'tab-btn px-4 py-2 rounded-xl text-xs font-semibold bg-white/10 text-slate-200 hover:bg-white/15 border border-white/10 transition';
         });
         items.forEach((el) => {
-          const match = filter === 'all' || el.dataset.cat === filter;
+          const cats = (el.dataset.cat || '').split(/\s+/);
+          const match = filter === 'all' || cats.includes(filter);
           el.classList.toggle('hidden', !match);
         });
       });
