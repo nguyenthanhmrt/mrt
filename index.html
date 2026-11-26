@@ -147,6 +147,10 @@
                     <i class="fa-solid fa-layer-group text-xs"></i>
                     Kho Dự Án
                 </a>
+                <a href="pb3dauto/" class="px-3.5 py-2 text-sm font-medium text-emerald-400 hover:text-emerald-300 hover:bg-emerald-950/40 rounded-lg transition-colors flex items-center gap-1.5">
+                    <i class="fa-solid fa-building text-xs"></i>
+                    Phòng 3D AI
+                </a>
                 <a href="#ai-demo" class="px-3.5 py-2 text-sm font-medium text-sky-400 hover:text-sky-300 hover:bg-sky-950/40 rounded-lg transition-colors flex items-center gap-1.5">
                     <i class="fa-solid fa-wand-magic-sparkles text-xs"></i>
                     AI Studio
@@ -183,6 +187,12 @@
             </a>
             <a href="#projects" class="mobile-nav-link px-4 py-3 text-sm font-medium text-slate-200 hover:bg-slate-800/80 rounded-lg transition-colors flex items-center gap-3">
                 <i class="fa-solid fa-diagram-project text-purple-400 w-5"></i> Dự án & Giải pháp
+            </a>
+            <a href="projects.html" class="mobile-nav-link px-4 py-3 text-sm font-medium text-cyan-300 hover:bg-slate-800/80 rounded-lg transition-colors flex items-center gap-3">
+                <i class="fa-solid fa-layer-group text-cyan-400 w-5"></i> Kho Dự Án
+            </a>
+            <a href="pb3dauto/" class="mobile-nav-link px-4 py-3 text-sm font-medium text-emerald-300 bg-emerald-950/40 rounded-lg transition-colors flex items-center gap-3">
+                <i class="fa-solid fa-building text-emerald-400 w-5"></i> Phòng Kỹ Thuật 3D AI (PB3DAUTO)
             </a>
             <a href="#ai-demo" class="mobile-nav-link px-4 py-3 text-sm font-medium text-sky-300 bg-sky-950/40 rounded-lg transition-colors flex items-center gap-3">
                 <i class="fa-solid fa-wand-magic-sparkles text-sky-400 w-5"></i> AI Interactive Studio
@@ -708,10 +718,15 @@
             </div>
 
             <!-- Projects Grid -->
-            <div class="mb-6 flex justify-end">
+            <div class="mb-6 flex flex-wrap justify-end gap-3">
+                <a href="pb3dauto/" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold bg-gradient-to-r from-emerald-500 to-cyan-600 hover:from-emerald-400 hover:to-cyan-500 text-white shadow-lg shadow-emerald-500/20 transition-all">
+                    <i class="fa-solid fa-building"></i>
+                    Mở Phòng Kỹ Thuật 3D AI
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
                 <a href="projects.html" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white shadow-lg shadow-cyan-500/20 transition-all">
                     <i class="fa-solid fa-layer-group"></i>
-                    Xem toàn bộ Kho Dự Án (MRT SYSTEM, DrowsyGuard, Trợ Lý Việt, WeatherIsland...)
+                    Xem toàn bộ Kho Dự Án (MRT SYSTEM, PB3DAUTO 3D, DrowsyGuard, Trợ Lý Việt...)
                     <i class="fa-solid fa-arrow-right"></i>
                 </a>
             </div>
@@ -740,6 +755,35 @@
                     <div class="px-6 py-3.5 bg-slate-900/60 border-t border-white/5 flex items-center justify-between">
                         <span class="text-[11px] font-mono text-emerald-400">● Đã đóng gói .EXE</span>
                         <a href="projects.html" class="text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition">Xem chi tiết <i class="fa-solid fa-arrow-right ml-1"></i></a>
+                    </div>
+                </div>
+
+                <!-- Featured Project: PB3DAUTO -->
+                <div class="project-card glass-card rounded-2xl overflow-hidden flex flex-col justify-between border-emerald-400/35" data-category="ai">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-2.5 py-1 rounded-md text-[11px] font-semibold bg-emerald-500/15 text-emerald-300 border border-emerald-400/30">★ Web 3D AI • Trực Tuyến</span>
+                            <span class="text-xs font-mono text-emerald-400"><i class="fa-regular fa-calendar-check mr-1"></i>2026</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2 hover:text-emerald-400 transition-colors">
+                            PB3DAUTO — Phòng Kỹ Thuật Phần Mềm 3D v4.0
+                        </h3>
+                        <p class="text-xs text-slate-300 leading-relaxed mb-4">
+                            Tòa nhà AI Tech HQ 3D chân thực tương tác trên trình duyệt với 8 phòng ban AI Agents chạy quy trình SDLC tự động, góc nhìn Zoom Vệ Tinh -&gt; Tòa Nhà, Quản lý AI 3D tuần tra và luồng Telemetry trực tiếp.
+                        </p>
+                        <div class="flex flex-wrap gap-1.5 text-[11px] font-mono text-emerald-300">
+                            <span class="px-2 py-0.5 rounded bg-slate-900/80 border border-white/10">React + Three.js</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-900/80 border border-white/10">8-Agent SDLC</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-900/80 border border-white/10">Satellite Zoom</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-900/80 border border-white/10">Gemini / Ollama</span>
+                        </div>
+                    </div>
+                    <div class="px-6 py-3.5 bg-slate-900/60 border-t border-white/5 flex items-center justify-between gap-2">
+                        <span class="text-[11px] font-mono text-emerald-400">● Chạy trực tiếp trên Web</span>
+                        <div class="flex items-center gap-3">
+                            <a href="pb3dauto/" class="text-xs font-semibold text-emerald-400 hover:text-emerald-300 transition">Mở App 3D <i class="fa-solid fa-arrow-right ml-1"></i></a>
+                            <a href="https://github.com/nguyenthanhmrt/PB3DAUTO" target="_blank" rel="noreferrer" class="text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition">GitHub <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i></a>
+                        </div>
                     </div>
                 </div>
 
@@ -2424,9 +2468,10 @@ END:VCARD`;
                 1. <strong>Thị giác máy tính (Computer Vision):</strong> Phát triển DrowsyGuard (ML Kit / CameraX / OpenCV), YOLOv8, FaceNet nhận diện khuôn mặt đa luồng và giám sát an ninh.<br>
                 2. <strong>Generative AI & LLMs:</strong> Phát triển MRT SYSTEM (3D Hologram AI Windows), Trợ Lý Việt (Android AI), tối ưu hóa RAG, fine-tuning LLaMA 3 và Clone giọng nói Offline.<br>
                 3. <strong>Hạ tầng & MLOps:</strong> Quản trị cụm máy chủ GPU Kubernetes, Cloudflare Workers &amp; Pages, Triton Inference Server.`;
-            } else if (lower.includes('dự án') || lower.includes('mrt') || lower.includes('drowsy') || lower.includes('trợ lý') || lower.includes('weather')) {
+            } else if (lower.includes('dự án') || lower.includes('mrt') || lower.includes('drowsy') || lower.includes('trợ lý') || lower.includes('weather') || lower.includes('pb3d') || lower.includes('phòng 3d') || lower.includes('tòa nhà')) {
                 return `Các dự án công nghệ nổi bật do anh Nguyễn Thanh phát triển:<br>
                 • <strong>MRT SYSTEM:</strong> Trợ lý ảo 3D Hologram AI điều khiển toàn quyền Windows &amp; Clone giọng Offline.<br>
+                • <strong>PB3DAUTO (Phòng Kỹ Thuật Phần Mềm 3D v4.0):</strong> Tòa nhà AI Tech HQ 3D chân thực tương tác trực tuyến với 8 AI Agents quy trình SDLC &amp; Zoom Vệ Tinh tại <a href="pb3dauto/" class="text-emerald-400 underline font-mono">nguyenthanhazt.tech/pb3dauto/</a>.<br>
                 • <strong>DrowsyGuard:</strong> Ứng dụng Android &amp; Windows phát hiện buồn ngủ thời gian thực (CameraX, ML Kit, PERCLOS).<br>
                 • <strong>Trợ Lý Việt:</strong> Trợ lý giọng nói AI tiếng Việt cho Android (điều khiển 0ms, giọng Miền Tây, Liquid Glass).<br>
                 • <strong>WeatherIsland MRT v1.0:</strong> Ứng dụng thời tiết Dynamic Island kèm Web kích hoạt tự động Cloudflare Workers.`;
@@ -2465,6 +2510,7 @@ QUY TẮC TRẢ LỜI:
         const DEFAULT_KNOWLEDGE_BASE = 
 `- Các dự án tiêu biểu trong hệ sinh thái MRT SYSTEM:
   + MRT SYSTEM: Trợ lý ảo 3D Hologram AI điều khiển toàn quyền Windows, tích hợp Gemini API và Clone giọng Offline 100% (VieNeu-TTS).
+  + PB3DAUTO (Phòng Kỹ Thuật Phần Mềm 3D v4.0): Ứng dụng Web 3D Three.js mô phỏng tòa nhà AI Tech HQ chân thực với 8 AI Agents quy trình SDLC, Zoom Vệ Tinh -> Tòa Nhà và Quản lý AI 3D trực tuyến tại https://nguyenthanhazt.tech/pb3dauto/.
   + DrowsyGuard: Ứng dụng Android (CameraX, ML Kit Face Detection) & Windows Multi-Cam phát hiện buồn ngủ thời gian thực (microsleep, gục đầu, PERCLOS).
   + Trợ Lý Việt: Trợ lý giọng nói AI tiếng Việt cho Android (điều khiển 0ms, an toàn app ngân hàng, giọng Miền Tây, Liquid Glass).
   + WeatherIsland MRT v1.0: Ứng dụng thời tiết Dynamic Island kèm Web kích hoạt tự động Cloudflare Workers + VietQR.
