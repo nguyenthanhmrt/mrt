@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MRT SOFT HUB — Phòng Điều Hành Công Ty Phần Mềm 3D</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <script type="module" crossorigin src="./assets/index-LbtnzbCm.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-CnCBFzzm.css">
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <!-- Flycam POV Viewfinder HUD -->
+    <div id="flycam-hud" class="flycam-hud hidden" aria-hidden="true">
+      <div class="flycam-corner tl"></div>
+      <div class="flycam-corner tr"></div>
+      <div class="flycam-corner bl"></div>
+      <div class="flycam-corner br"></div>
+      <div class="flycam-crosshair">+</div>
+      <div class="flycam-telemetry glass-panel">
+        <span class="rec-dot"></span>
+        <span id="flycam-telemetry-text">REC • FLYCAM-01 • MRT SOFT HUB</span>
+      </div>
+    </div>
+
+    <!-- Top-left title badge + Studio trigger -->
+    <header class="hud-header glass-panel">
+      <div class="brand-row">
+        <span class="status-dot" id="header-status-dot"></span>
+        <div class="brand-text">
+          <h1 class="hud-title">MRT SOFT HUB</h1>
+          <p class="hud-subtitle" id="header-project-name">SmartPOS Bán Hàng Đa Chi Nhánh</p>
+        </div>
+        <button id="btn-header-supreme" class="supreme-trigger-btn" title="Mở màn hình Prompt Chỉ đạo quyền cao nhất (Phím P)">
+          ★ Chỉ đạo
+        </button>
+        <button id="btn-open-studio" class="studio-trigger-btn" title="Mở Studio nhập yêu cầu & xem quy trình">
+          + Nhập Yêu Cầu
+        </button>
+        <button id="btn-min-header" class="icon-btn min-btn" title="Thu nhỏ thanh tiêu đề" aria-label="Thu nhỏ">–</button>
+      </div>
+      <div class="header-meta">
+        <span class="meta-pill" id="live-clock">--:--:--</span>
+        <span class="meta-pill" id="header-version">v1.0.0</span>
+        <span class="meta-pill status-healthy" id="ops-status-pill">SYSTEM HEALTHY</span>
+      </div>
+    </header>
+
+    <!-- Top-center ultra-slim 6-stage SDLC pipeline bar -->
+    <nav id="pipeline-bar" class="pipeline-bar glass-panel" aria-label="Quy trình 6 giai đoạn sản xuất phần mềm">
+      <span class="pipe-min-label">Quy trình 6 bước</span>
+      <div id="pipeline-steps" class="pipeline-steps-wrap"></div>
+      <button id="btn-min-pipeline" class="icon-btn min-btn" title="Thu nhỏ thanh quy trình 6 bước" aria-label="Thu nhỏ">–</button>
+    </nav>
+
+    <!-- Left collapsible Software Project Studio Drawer -->
+    <aside id="studio-drawer" class="studio-drawer glass-panel hidden" aria-label="Studio điều hành dự án phần mềm">
+      <div class="drawer-header">
+        <div class="drawer-tabs">
+          <button class="tab-btn active" data-tab="create">Tạo Dự Án</button>
+          <button class="tab-btn" data-tab="pipeline">Quy trình 6 Bước</button>
+          <button class="tab-btn" data-tab="agents">Trao đổi AI</button>
+          <button class="tab-btn" data-tab="factory">Xưởng Thật</button>
+        </div>
+        <div class="win-actions">
+          <button id="btn-min-studio" class="icon-btn min-btn" title="Thu nhỏ Studio" aria-label="Thu nhỏ">–</button>
+          <button id="btn-close-studio" class="icon-btn" title="Đóng Studio" aria-label="Đóng">✕</button>
+        </div>
+      </div>
+
+      <!-- Tab 1: Create / Input Requirements -->
+      <div id="tab-create" class="drawer-body">
+        <div class="field-block">
+          <span class="field-label">Mẫu dự án nhanh</span>
+          <div id="template-chips" class="chip-grid"></div>
+        </div>
+
+        <form id="project-form" class="project-form">
+          <label class="field-block">
+            <span class="field-label">Tên phần mềm</span>
+            <input id="input-proj-name" type="text" required placeholder="VD: SmartPOS Bán Hàng" />
+          </label>
+
+          <div class="field-block">
+            <span class="field-label">Nền tảng đầu ra</span>
+            <div class="platform-checks">
+              <label class="plat-check">
+                <input type="checkbox" name="platform" value="android" checked />
+                <span>Android (.APK/.AAB)</span>
+              </label>
+              <label class="plat-check">
+                <input type="checkbox" name="platform" value="windows" checked />
+                <span>Windows (.EXE/.MSIX)</span>
+              </label>
+              <label class="plat-check">
+                <input type="checkbox" name="platform" value="web" />
+                <span>Web / Cloud</span>
+              </label>
+              <label class="plat-check">
+                <input type="checkbox" name="platform" value="ios" />
+                <span>iOS (.IPA)</span>
+              </label>
+            </div>
+          </div>
+
+          <label class="field-block">
+            <span class="field-label">Mô tả yêu cầu đầu vào</span>
+            <textarea
+              id="input-proj-desc"
+              rows="4"
+              required
+              placeholder="Mô tả tính năng cần xây dựng, quy trình nghiệp vụ, đồng bộ dữ liệu..."
+            ></textarea>
+          </label>
+
+          <label class="field-block">
+            <span class="field-label">Gói bảo hành & SLA</span>
+            <select id="input-warranty">
+              <option value="12">12 tháng — Tiêu chuẩn (8x5 Support)</option>
+              <option value="24" selected>24 tháng — Doanh nghiệp (SLA 99.98% 24/7)</option>
+            </select>
+          </label>
+
+          <label class="plat-check real-disk-check">
+            <input id="chk-real-disk" type="checkbox" checked />
+            <span>Tạo mã nguồn &amp; build thật trên ổ cứng (projects/)</span>
+          </label>
+
+          <button type="submit" class="primary-btn submit-btn">
+            ⚡ Tạo Xưởng Thật &amp; Chạy Quy Trình Công Ty
+          </button>
+        </form>
+      </div>
+
+      <!-- Tab 2: Live 6-Stage Pipeline & Warranty Controls -->
+      <div id="tab-pipeline" class="drawer-body hidden">
+        <div class="sim-controls-row">
+          <button id="btn-sim-pause" class="mini-ctrl-btn">Tạm dừng</button>
+          <div class="speed-group">
+            <button class="speed-btn active" data-speed="1">1x</button>
+            <button class="speed-btn" data-speed="2">2x</button>
+            <button class="speed-btn" data-speed="4">4x</button>
+          </div>
+          <button id="btn-warranty-ticket" class="mini-ctrl-btn warranty-btn" title="Mô phỏng khách hàng báo lỗi bảo hành">
+            + Ticket Bảo Hành
+          </button>
+        </div>
+
+        <div id="stage-stepper" class="stage-stepper"></div>
+
+        <div class="artifacts-box">
+          <div class="field-label">Sản phẩm đầu ra & Gói cài đặt</div>
+          <div id="artifacts-list" class="artifacts-list"></div>
+        </div>
+      </div>
+
+      <!-- Tab 3: Live Vietnamese AI Agent-to-Agent Feed & Directive Input -->
+      <div id="tab-agents" class="drawer-body hidden">
+        <div class="field-label">Luồng trao đổi giữa 18 AI Agent (Tiếng Việt)</div>
+        <div id="agent-feed" class="agent-feed"></div>
+        <form id="directive-form" class="directive-form">
+          <input
+            id="input-directive"
+            type="text"
+            placeholder="Gửi chỉ đạo tiếng Việt cho các AI Agent..."
+            required
+          />
+          <button type="submit" class="mini-ctrl-btn send-btn">Gửi</button>
+        </form>
+      </div>
+
+      <!-- Tab 4: Real Hard-Drive Build & GitHub Factory -->
+      <div id="tab-factory" class="drawer-body hidden">
+        <div class="field-label">Công cụ Build &amp; Git trên máy</div>
+        <div id="factory-tools" class="factory-tools">Đang kiểm tra công cụ...</div>
+
+        <div id="factory-active-card" class="factory-card">
+          <div class="factory-card-title">Chưa chọn dự án trên ổ cứng</div>
+          <div class="factory-card-path">Tạo dự án mới ở tab "Tạo Dự Án" hoặc chọn bên dưới.</div>
+        </div>
+
+        <div class="factory-actions">
+          <button id="btn-real-build" type="button" class="mini-ctrl-btn send-btn">⚡ Build Thật</button>
+          <button id="btn-open-folder" type="button" class="mini-ctrl-btn">📂 Mở Thư Mục</button>
+        </div>
+
+        <div class="factory-gh-row">
+          <select id="sel-gh-vis" aria-label="Quyền riêng tư GitHub">
+            <option value="private" selected>GitHub: Private</option>
+            <option value="public">GitHub: Public</option>
+          </select>
+          <button id="btn-push-github" type="button" class="mini-ctrl-btn warranty-btn">🐙 Đẩy GitHub</button>
+        </div>
+
+        <div class="field-label">Terminal Build Thật</div>
+        <pre id="factory-console" class="factory-console">Sẵn sàng ghi mã nguồn ra ổ cứng &amp; biên dịch...</pre>
+
+        <div class="field-label">Dự án đã lưu trong projects/</div>
+        <div id="factory-projects-list" class="factory-projects-list"></div>
+      </div>
+    </aside>
+
+    <!-- Hover tooltip -->
+    <div id="tooltip" class="hud-tooltip hidden"></div>
+
+    <!-- Right-side Screen & Employee Inspector -->
+    <aside id="inspector" class="hud-inspector glass-panel hidden" aria-live="polite">
+      <div class="inspector-header">
+        <div>
+          <span class="inspector-badge" id="inspector-badge">MÀN HÌNH</span>
+          <h2 id="inspector-title">Chi tiết</h2>
+          <p id="inspector-role" class="inspector-role"></p>
+        </div>
+        <div class="win-actions">
+          <button id="btn-min-inspector" class="icon-btn min-btn" title="Thu nhỏ bảng chi tiết" aria-label="Thu nhỏ">–</button>
+          <button id="inspector-close" class="icon-btn" title="Đóng (ESC)" aria-label="Đóng">✕</button>
+        </div>
+      </div>
+      <div class="inspector-body">
+        <div class="inspector-preview-wrap">
+          <canvas id="inspector-preview" width="480" height="270"></canvas>
+        </div>
+        <div id="inspector-metrics" class="metrics-grid"></div>
+        <div id="inspector-desc" class="inspector-desc"></div>
+
+        <!-- Direct Vietnamese AI Agent Interaction -->
+        <div id="agent-chat-section" class="agent-chat-section hidden">
+          <div class="agent-detail-box">
+            <div><span class="detail-tag">Đang làm gì:</span> <span id="agent-doing"></span></div>
+            <div><span class="detail-tag">Nhiệm vụ:</span> <span id="agent-task"></span></div>
+            <div><span class="detail-tag">Phối hợp với:</span> <span id="agent-peers"></span></div>
+          </div>
+
+          <div class="inspector-ai-config">
+            <div class="inspector-ai-head">
+              <span class="detail-tag">Cấu hình Model AI &amp; Giọng</span>
+              <span id="inspector-agent-gender" class="gender-pill male">♂ Nam</span>
+            </div>
+            <div class="inspector-ai-row">
+              <select id="sel-inspector-model" title="Chọn Model AI thực hiện nhiệm vụ"></select>
+              <select id="sel-inspector-voice" title="Chọn giọng CIT Voice cùng giới tính"></select>
+            </div>
+            <button type="button" id="btn-agent-run-task" class="mini-ctrl-btn send-btn">⚡ Chạy nhiệm vụ AI &amp; Đọc</button>
+          </div>
+
+          <div class="quick-q-row">
+            <button type="button" class="quick-q-btn" data-q="Bạn đang làm gì?">Đang làm gì?</button>
+            <button type="button" class="quick-q-btn" data-q="Nhiệm vụ của bạn là gì?">Nhiệm vụ gì?</button>
+            <button type="button" class="quick-q-btn" data-q="Bạn đang trao đổi với ai?">Trao đổi với ai?</button>
+            <button type="button" id="btn-agent-speak" class="quick-q-btn" title="Đọc phản hồi mới nhất bằng CIT Voice">🔊 Đọc phản hồi</button>
+          </div>
+
+          <div id="agent-chat-history" class="agent-chat-history"></div>
+
+          <form id="agent-chat-form" class="directive-form">
+            <input
+              id="input-agent-question"
+              type="text"
+              placeholder="Hỏi AI Agent bằng tiếng Việt..."
+              required
+            />
+            <button type="submit" class="mini-ctrl-btn send-btn">Hỏi</button>
+          </form>
+        </div>
+      </div>
+      <div class="inspector-footer">
+        <button id="btn-inspector-yt" class="secondary-btn" title="Mở trình phát YouTube Mini giải trí trên màn hình">
+          ▶ Giải trí YouTube Mini
+        </button>
+        <button id="btn-back-overview" class="primary-btn">Quay lại toàn cảnh (ESC)</button>
+      </div>
+    </aside>
+
+    <!-- Supreme Owner Command Prompt Console (Highest Authority) -->
+    <section id="supreme-window" class="supreme-window glass-panel hidden" aria-label="Bảng Chỉ Đạo Quyền Cao Nhất">
+      <div class="supreme-header">
+        <div class="supreme-title-wrap">
+          <span class="supreme-badge">★ QUYỀN CAO NHẤT</span>
+          <span class="supreme-title">Lệnh Chỉ Đạo Trực Tiếp</span>
+        </div>
+        <div class="win-actions">
+          <button id="btn-min-supreme" class="icon-btn min-btn" title="Thu nhỏ bảng Chỉ đạo" aria-label="Thu nhỏ">–</button>
+          <button id="btn-close-supreme" class="icon-btn" title="Đóng bảng Chỉ đạo" aria-label="Đóng">✕</button>
+        </div>
+      </div>
+      <div class="supreme-body">
+        <div class="field-label supreme-label">Lệnh thực thi nhanh (1 chạm)</div>
+        <div id="supreme-chips" class="supreme-chips"></div>
+
+        <form id="supreme-form" class="supreme-form">
+          <textarea
+            id="supreme-input"
+            rows="3"
+            placeholder="Nhập prompt chỉ đạo bất kỳ bằng tiếng Việt... (VD: Tạo app Android + Windows bán hàng, chuyển bước Xây dựng 4x, bật Ban đêm, bật Flycam, mở YouTube...)"
+            required
+          ></textarea>
+          <button type="submit" class="supreme-exec-btn">
+            ⚡ THỰC THI LỆNH TỐI CAO (Ctrl+Enter)
+          </button>
+        </form>
+
+        <div class="field-label supreme-label">Nhật ký thực thi trực tiếp</div>
+        <div id="supreme-history" class="supreme-history"></div>
+      </div>
+    </section>
+
+    <!-- Draggable, Minimizable System & Interface Customizer Window -->
+    <section id="settings-window" class="settings-window glass-panel hidden" aria-label="Tùy chỉnh giao diện và hệ thống">
+      <div class="settings-header">
+        <div class="settings-title-wrap">
+          <span class="settings-badge">⚙ HỆ THỐNG</span>
+          <span class="settings-title">Tùy chỉnh Giao diện & 3D</span>
+        </div>
+        <div class="win-actions">
+          <button id="btn-min-settings" class="icon-btn min-btn" title="Thu nhỏ Tùy chỉnh hệ thống" aria-label="Thu nhỏ">–</button>
+          <button id="btn-close-settings" class="icon-btn" title="Đóng Tùy chỉnh" aria-label="Đóng">✕</button>
+        </div>
+      </div>
+      <div class="settings-body">
+        <div class="set-tabs">
+          <button type="button" class="set-tab-btn active" data-set-tab="colors">🎨 Màu sắc</button>
+          <button type="button" class="set-tab-btn" data-set-tab="decor">🪴 Trang trí</button>
+          <button type="button" class="set-tab-btn" data-set-tab="equip">🖥 Thiết bị</button>
+        </div>
+
+        <!-- Tab 1: Colors & Theme -->
+        <div id="set-tab-colors" class="set-tab-pane">
+          <div class="field-block">
+            <span class="field-label">Chủ đề không gian &amp; giao diện</span>
+            <div id="set-themes" class="set-theme-grid"></div>
+          </div>
+
+          <div class="field-block">
+            <span class="field-label">Màu nhấn chủ đạo &amp; LED trần</span>
+            <div id="set-accents" class="accent-row"></div>
+          </div>
+
+          <div class="field-block">
+            <span class="field-label">Tùy chỉnh màu chi tiết phòng 3D</span>
+            <div class="color-grid">
+              <label class="color-card">
+                <span>Màu tường</span>
+                <input id="col-wall" type="color" value="#ffffff" />
+              </label>
+              <label class="color-card">
+                <span>Màu sàn</span>
+                <input id="col-floor" type="color" value="#ffffff" />
+              </label>
+              <label class="color-card">
+                <span>Mặt bàn dev</span>
+                <input id="col-desk" type="color" value="#f3f6fa" />
+              </label>
+              <label class="color-card">
+                <span>Da ghế &amp; Sofa</span>
+                <input id="col-chair" type="color" value="#ffffff" />
+              </label>
+              <label class="color-card">
+                <span>Khung kính/Vàng</span>
+                <input id="col-trim" type="color" value="#d9b87a" />
+              </label>
+              <label class="color-card">
+                <span>Ánh sáng trần</span>
+                <input id="col-ceiling" type="color" value="#f9fcff" />
+              </label>
+            </div>
+          </div>
+
+          <div class="field-block">
+            <span class="field-label">Cỡ chữ giao diện</span>
+            <div class="scale-row">
+              <button type="button" class="mini-ctrl-btn scale-btn" data-font-scale="0.92">Nhỏ 92%</button>
+              <button type="button" class="mini-ctrl-btn scale-btn active" data-font-scale="1">Chuẩn 100%</button>
+              <button type="button" class="mini-ctrl-btn scale-btn" data-font-scale="1.12">Lớn 112%</button>
+            </div>
+          </div>
+
+          <label class="field-block">
+            <span class="field-label">Độ mờ nền kính HUD: <strong id="set-opacity-val">88%</strong></span>
+            <input id="set-opacity" type="range" min="65" max="96" value="88" />
+          </label>
+
+          <label class="field-block">
+            <span class="field-label">Tên thương hiệu trên tường đèn LED</span>
+            <input id="set-brand" type="text" maxlength="22" value="MRT SOFT HUB" placeholder="VD: MRT SOFT HUB" />
+          </label>
+        </div>
+
+        <!-- Tab 2: Room Decorations -->
+        <div id="set-tab-decor" class="set-tab-pane hidden">
+          <div class="field-block">
+            <span class="field-label">Trang trí nội thất &amp; mảng xanh 3D</span>
+            <div class="settings-toggles">
+              <label class="plat-check">
+                <input id="chk-plants" type="checkbox" checked />
+                <span>Cây xanh &amp; tường cây</span>
+              </label>
+              <label class="plat-check">
+                <input id="chk-carpet" type="checkbox" checked />
+                <span>Thảm trải sàn VIP</span>
+              </label>
+              <label class="plat-check">
+                <input id="chk-lounge" type="checkbox" checked />
+                <span>Sofa tiếp khách &amp; bàn trà</span>
+              </label>
+              <label class="plat-check">
+                <input id="chk-wall-art" type="checkbox" checked />
+                <span>Tranh nghệ thuật treo tường</span>
+              </label>
+              <label class="plat-check">
+                <input id="chk-ambient-strips" type="checkbox" checked />
+                <span>Đèn LED viền trần</span>
+              </label>
+              <label class="plat-check">
+                <input id="chk-bubbles" type="checkbox" checked />
+                <span>Bong bóng thoại 3D</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 3: Office Equipment -->
+        <div id="set-tab-equip" class="set-tab-pane hidden">
+          <div class="field-block">
+            <span class="field-label">Trang thiết bị &amp; hạ tầng công ty</span>
+            <div class="settings-toggles">
+              <label class="plat-check">
+                <input id="chk-glass" type="checkbox" checked />
+                <span>Vách kính phòng ban</span>
+              </label>
+              <label class="plat-check">
+                <input id="chk-server-rack" type="checkbox" checked />
+                <span>Tủ Rack Server AI</span>
+              </label>
+              <label class="plat-check">
+                <input id="chk-coffee-bar" type="checkbox" checked />
+                <span>Quầy Coffee Bar</span>
+              </label>
+              <label class="plat-check">
+                <input id="chk-cctv" type="checkbox" checked />
+                <span>4 Camera CCTV trần</span>
+              </label>
+              <label class="plat-check">
+                <input id="chk-flycam" type="checkbox" checked />
+                <span>Flycam tuần tra</span>
+              </label>
+              <label class="plat-check">
+                <input id="chk-lockers" type="checkbox" checked />
+                <span>Tủ đồ Locker</span>
+              </label>
+              <label class="plat-check">
+                <input id="chk-clocks" type="checkbox" checked />
+                <span>3 Đồng hồ thế giới</span>
+              </label>
+              <label class="plat-check">
+                <input id="chk-autowalk" type="checkbox" checked />
+                <span>MRT tự đi giao việc</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="settings-actions">
+          <button id="btn-return-podium" type="button" class="mini-ctrl-btn">Gọi MRT về bục chỉ huy</button>
+          <button id="btn-reset-settings" type="button" class="mini-ctrl-btn">Khôi phục mặc định</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Draggable, Minimizable Floating CIT Voice Studio Window -->
+    <section id="voice-window" class="voice-window glass-panel hidden" aria-label="Kết nối CIT Voice Studio">
+      <div class="voice-header">
+        <div class="voice-title-wrap">
+          <span class="voice-badge">🔊 CIT VOICE</span>
+          <span class="voice-title">Kết nối CIT Voice Studio</span>
+        </div>
+        <div class="win-actions">
+          <button id="btn-min-voice" class="icon-btn min-btn" title="Thu nhỏ CIT Voice" aria-label="Thu nhỏ">–</button>
+          <button id="btn-close-voice" class="icon-btn" title="Đóng CIT Voice" aria-label="Đóng">✕</button>
+        </div>
+      </div>
+      <div class="voice-body">
+        <div class="voice-conn-card">
+          <div class="voice-conn-head">
+            <span id="voice-status-badge" class="voice-status-badge offline">○ CHƯA BẬT</span>
+            <span id="voice-dir-path" class="voice-dir-path">E:\New\SOFT\cit voice</span>
+          </div>
+          <div id="voice-engine-info" class="voice-engine-info">Đang kiểm tra trạng thái CIT Voice Studio...</div>
+          <div class="voice-server-actions">
+            <button id="btn-voice-start" type="button" class="mini-ctrl-btn send-btn">▶ Bật CIT Voice</button>
+            <button id="btn-voice-stop" type="button" class="mini-ctrl-btn">■ Tắt</button>
+            <button id="btn-voice-refresh" type="button" class="mini-ctrl-btn">↻ Kiểm tra</button>
+          </div>
+        </div>
+
+        <div class="voice-roster-head">
+          <span class="field-label">19 AI Agent: Model • Nhiệm vụ • Giọng theo giới tính</span>
+          <button id="btn-voice-reset-roster" type="button" class="mini-ctrl-btn" title="Khôi phục Model & Giọng mặc định">↺ Mặc định</button>
+        </div>
+        <div id="voice-agent-roster" class="voice-roster"></div>
+
+        <label class="field-block">
+          <span class="field-label">Tốc độ đọc: <strong id="voice-speed-val">1.05x</strong></span>
+          <input id="voice-speed" type="range" min="0.8" max="1.4" step="0.05" value="1.05" />
+        </label>
+
+        <div class="voice-auto-checks">
+          <label class="plat-check">
+            <input id="chk-voice-supreme" type="checkbox" checked />
+            <span>Tự đọc lệnh Chỉ đạo Tối Cao</span>
+          </label>
+          <label class="plat-check">
+            <input id="chk-voice-agent" type="checkbox" checked />
+            <span>Tự đọc câu trả lời AI Agent</span>
+          </label>
+          <label class="plat-check">
+            <input id="chk-voice-stage" type="checkbox" />
+            <span>Tự báo cáo khi chuyển giai đoạn SDLC</span>
+          </label>
+        </div>
+
+        <form id="voice-test-form" class="voice-test-form">
+          <textarea
+            id="voice-test-input"
+            rows="2"
+            placeholder="Nhập câu tiếng Việt để Leader MRT đọc thử..."
+          >Xin chào sếp! Phòng điều hành MRT SOFT HUB đã kết nối thành công với CIT Voice Studio.</textarea>
+          <div class="voice-test-actions">
+            <button id="btn-voice-speak" type="submit" class="mini-ctrl-btn send-btn">🔊 Đọc thử</button>
+            <button id="btn-voice-cancel" type="button" class="mini-ctrl-btn">■ Dừng</button>
+            <button id="btn-voice-convo" type="button" class="mini-ctrl-btn warranty-btn">🎙 Đọc hội thoại nhóm</button>
+          </div>
+        </form>
+
+        <div id="voice-speaking-status" class="voice-speaking-status">Sẵn sàng kết nối giọng nói tiếng Việt cục bộ.</div>
+        <audio id="voice-audio-player" class="voice-audio-player" controls></audio>
+        <div class="voice-ai-note">Giọng đọc được tạo bằng AI • CIT Voice Studio (E:\New\SOFT\cit voice)</div>
+      </div>
+    </section>
+
+    <!-- Draggable, Minimizable, Customizable Progress & Report Display Window -->
+    <section id="report-window" class="report-window glass-panel hidden" aria-label="Màn hình hiển thị tiến độ báo cáo">
+      <div class="report-header">
+        <div class="report-title-wrap">
+          <span class="report-badge">📊 BÁO CÁO</span>
+          <span id="rep-header-title" class="report-title">BÁO CÁO TIẾN ĐỘ DỰ ÁN — MRT SOFT HUB</span>
+        </div>
+        <div class="win-actions">
+          <button id="btn-rep-customize" class="mini-ctrl-btn" title="Mở bảng tùy chỉnh giao diện báo cáo">⚙ Tùy chỉnh</button>
+          <button id="btn-rep-size" class="mini-ctrl-btn" title="Đổi kích thước cửa sổ">Vừa</button>
+          <button id="btn-min-report" class="icon-btn min-btn" title="Thu nhỏ Màn hình Báo cáo" aria-label="Thu nhỏ">–</button>
+          <button id="btn-close-report" class="icon-btn" title="Đóng Báo cáo" aria-label="Đóng">✕</button>
+        </div>
+      </div>
+
+      <!-- Collapsible Report Customizer Panel -->
+      <div id="rep-custom-panel" class="report-custom-panel hidden">
+        <label class="field-block">
+          <span class="field-label">Tiêu đề màn hình báo cáo</span>
+          <input id="rep-cfg-title" type="text" maxlength="64" placeholder="VD: BÁO CÁO TIẾN ĐỘ DỰ ÁN — MRT SOFT HUB" />
+        </label>
+
+        <div class="rep-custom-grid">
+          <div class="field-block">
+            <span class="field-label">Chủ đề màu sắc</span>
+            <div id="rep-cfg-themes" class="rep-chip-row"></div>
+          </div>
+          <div class="field-block">
+            <span class="field-label">Màu nhấn</span>
+            <div id="rep-cfg-accents" class="accent-row"></div>
+          </div>
+        </div>
+
+        <div class="rep-custom-grid">
+          <div class="field-block">
+            <span class="field-label">Bố cục cột</span>
+            <div class="rep-chip-row">
+              <button type="button" class="mini-ctrl-btn" data-rep-layout="2col">2 Cột</button>
+              <button type="button" class="mini-ctrl-btn" data-rep-layout="1col">1 Cột</button>
+            </div>
+          </div>
+          <div class="field-block">
+            <span class="field-label">Cỡ chữ báo cáo</span>
+            <div class="rep-chip-row">
+              <button type="button" class="mini-ctrl-btn" data-rep-scale="0.92">Nhỏ</button>
+              <button type="button" class="mini-ctrl-btn" data-rep-scale="1">Chuẩn</button>
+              <button type="button" class="mini-ctrl-btn" data-rep-scale="1.12">Lớn</button>
+            </div>
+          </div>
+        </div>
+
+        <label class="field-block">
+          <span class="field-label">Độ mờ nền báo cáo: <strong id="rep-cfg-opacity-val">92%</strong></span>
+          <input id="rep-cfg-opacity" type="range" min="72" max="98" value="92" />
+        </label>
+
+        <div class="field-block">
+          <span class="field-label">Thành phần hiển thị</span>
+          <div class="rep-checks-row">
+            <label class="plat-check"><input id="chk-rep-kpi" type="checkbox" checked /><span>Chỉ số KPI</span></label>
+            <label class="plat-check"><input id="chk-rep-stages" type="checkbox" checked /><span>6 Phòng ban</span></label>
+            <label class="plat-check"><input id="chk-rep-agents" type="checkbox" checked /><span>AI Agents</span></label>
+            <label class="plat-check"><input id="chk-rep-outputs" type="checkbox" checked /><span>Build &amp; Log</span></label>
+            <label class="plat-check"><input id="chk-rep-memo" type="checkbox" checked /><span>Ghi chú sếp</span></label>
+          </div>
+        </div>
+
+        <div class="rep-chip-row">
+          <button id="btn-rep-reset" type="button" class="mini-ctrl-btn">↺ Khôi phục mặc định</button>
+        </div>
+      </div>
+
+      <!-- Live Report Content -->
+      <div class="report-body">
+        <div id="rep-hero" class="rep-hero"></div>
+
+        <div id="rep-sec-kpi">
+          <div id="rep-kpi-grid" class="rep-kpi-grid"></div>
+        </div>
+
+        <div class="rep-columns">
+          <div id="rep-sec-stages" class="rep-section">
+            <span class="field-label">Tiến độ 6 phòng ban (Bấm để xem 3D)</span>
+            <div id="rep-stages-list" class="rep-stage-list"></div>
+          </div>
+
+          <div class="rep-stage-list">
+            <div id="rep-sec-agents" class="rep-section">
+              <span class="field-label">AI Agent đang phụ trách</span>
+              <div id="rep-agents-list" class="rep-agents-list"></div>
+            </div>
+
+            <div id="rep-sec-outputs" class="rep-section">
+              <span class="field-label">Sản phẩm Xưởng Thật &amp; Nhật ký</span>
+              <div id="rep-outputs-list" class="rep-outputs-list"></div>
+            </div>
+          </div>
+        </div>
+
+        <div id="rep-sec-memo" class="rep-memo-box">
+          <span class="field-label">Ghi chú &amp; Kết luận báo cáo (được đọc kèm giọng AI)</span>
+          <textarea id="rep-memo-input" rows="2" placeholder="Nhập ghi chú điều hành hoặc kết luận cuộc họp..."></textarea>
+        </div>
+      </div>
+
+      <div class="report-footer">
+        <div class="report-footer-actions">
+          <button id="btn-rep-speak" type="button" class="mini-ctrl-btn send-btn">🔊 Đọc báo cáo</button>
+          <button id="btn-rep-export" type="button" class="mini-ctrl-btn">⬇ Xuất .MD</button>
+        </div>
+        <span id="rep-updated-at" class="rep-updated-at">--:--:--</span>
+      </div>
+    </section>
+
+    <!-- Draggable, Minimizable Floating YouTube Mini Entertainment Window -->
+    <section id="yt-window" class="yt-window glass-panel hidden" aria-label="YouTube Mini Giải Trí">
+      <div class="yt-header">
+        <div class="yt-title-wrap">
+          <span class="yt-badge">▶ YOUTUBE MINI</span>
+          <span class="yt-title">Giải trí & Nhạc Lofi</span>
+        </div>
+        <div class="win-actions">
+          <button id="btn-resize-yt" class="mini-ctrl-btn" title="Đổi kích thước cửa sổ">Vừa</button>
+          <button id="btn-min-yt" class="icon-btn min-btn" title="Thu nhỏ (vẫn phát nhạc)" aria-label="Thu nhỏ">–</button>
+          <button id="btn-close-yt" class="icon-btn" title="Đóng YouTube Mini" aria-label="Đóng">✕</button>
+        </div>
+      </div>
+      <div class="yt-body">
+        <div id="yt-presets" class="yt-presets"></div>
+        <form id="yt-url-form" class="directive-form">
+          <input
+            id="yt-url-input"
+            type="text"
+            placeholder="Dán link YouTube (watch?v=, youtu.be/, shorts/)..."
+            required
+          />
+          <button type="submit" class="mini-ctrl-btn send-btn">Phát</button>
+        </form>
+        <div id="yt-status" class="yt-status">Chọn kênh hoặc dán link YouTube để phát</div>
+        <div class="yt-frame-wrap">
+          <iframe
+            id="yt-iframe"
+            title="YouTube Mini Player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- Build Completion Notification Toast with Direct Test Paths -->
+    <aside id="build-toast" class="build-toast glass-panel hidden" aria-live="polite" aria-label="Thông báo hoàn tất Build">
+      <div class="build-toast-head">
+        <div class="build-toast-title-wrap">
+          <span id="build-toast-badge" class="build-toast-badge">✅ BUILD HOÀN TẤT</span>
+          <span id="build-toast-title" class="build-toast-title">Dự án đã sẵn sàng test</span>
+        </div>
+        <button id="btn-close-build-toast" class="icon-btn" title="Đóng thông báo" aria-label="Đóng">✕</button>
+      </div>
+      <div class="build-toast-body">
+        <div id="build-toast-summary" class="build-toast-summary"></div>
+        <div id="build-toast-links" class="build-toast-links"></div>
+      </div>
+      <div class="build-toast-foot">
+        <button id="btn-toast-open-folder" type="button" class="mini-ctrl-btn">📂 Mở thư mục</button>
+        <button id="btn-toast-open-factory" type="button" class="mini-ctrl-btn send-btn">⚙ Mở Xưởng Thật</button>
+      </div>
+    </aside>
+
+    <!-- Live 1-line Vietnamese Agent Exchange Ticker -->
+    <div id="agent-ticker" class="agent-ticker glass-panel" role="button" tabindex="0" title="Bấm để mở luồng trao đổi giữa các AI Agent">
+      <span class="ticker-badge">AI COMMS</span>
+      <span id="agent-ticker-text" class="ticker-text">Đang đồng bộ trao đổi giữa 18 AI Agent...</span>
+      <button id="btn-close-ticker" class="ticker-close" title="Ẩn thanh trao đổi nhanh" aria-label="Đóng">✕</button>
+    </div>
+
+    <!-- Bottom floating control bar -->
+    <nav class="hud-controls glass-panel" aria-label="Điều khiển góc nhìn và ánh sáng">
+      <span class="ctrl-min-label">Điều khiển</span>
+      <div class="ctrl-groups-wrap">
+        <div class="ctrl-group">
+          <button class="ctrl-btn active" data-preset="overview" title="Phím 1">
+            <span>Toàn cảnh</span><kbd>1</kbd>
+          </button>
+          <button class="ctrl-btn" data-preset="led" title="Phím 2">
+            <span>Màn hình LED</span><kbd>2</kbd>
+          </button>
+          <button class="ctrl-btn" data-preset="devs" title="Phím 3">
+            <span>Bàn Dev</span><kbd>3</kbd>
+          </button>
+          <button class="ctrl-btn" data-preset="top" title="Phím 4">
+            <span>Trên cao</span><kbd>4</kbd>
+          </button>
+          <button class="ctrl-btn" data-preset="mrt" title="Góc nhìn Leader MRT (Phím M)">
+            <span>Leader MRT</span><kbd>M</kbd>
+          </button>
+        </div>
+        <div class="ctrl-divider"></div>
+        <div class="ctrl-group">
+          <button id="btn-supreme" class="ctrl-btn supreme-ctrl-btn" title="Mở màn hình Prompt Chỉ đạo quyền cao nhất (Phím P)">
+            <span>★ Chỉ đạo</span><kbd>P</kbd>
+          </button>
+          <button id="btn-open-agents" class="ctrl-btn" title="Xem trao đổi giữa các AI Agent">
+            <span>Trao đổi AI</span>
+          </button>
+          <button id="btn-open-factory" class="ctrl-btn" title="Mở Xưởng build thật ra ổ cứng & đẩy GitHub">
+            <span>Xưởng Thật</span>
+          </button>
+          <button id="btn-voice" class="ctrl-btn" title="Kết nối giọng nói AI tiếng Việt CIT Voice (Phím V)">
+            <span>🔊 Giọng nói</span><kbd>V</kbd>
+          </button>
+          <button id="btn-report" class="ctrl-btn" title="Mở màn hình hiển thị tiến độ báo cáo tùy chỉnh (Phím R)">
+            <span>📊 Báo cáo</span><kbd>R</kbd>
+          </button>
+          <button id="btn-youtube" class="ctrl-btn" title="Mở YouTube Mini giải trí (Phím Y)">
+            <span>YouTube</span><kbd>Y</kbd>
+          </button>
+          <button id="btn-flycam" class="ctrl-btn" title="Góc nhìn Flycam giám sát (Phím F)">
+            <span>Flycam</span><kbd>F</kbd>
+          </button>
+          <button id="btn-lighting" class="ctrl-btn" title="Phím N">
+            <span id="lighting-label">Ban ngày</span><kbd>N</kbd>
+          </button>
+          <button id="btn-follow" class="ctrl-btn" title="Tự động chuyển camera theo giai đoạn đang chạy">
+            <span>Theo dõi</span>
+          </button>
+          <button id="btn-orbit" class="ctrl-btn" title="Phím Space">
+            <span>Xoay</span><kbd>Space</kbd>
+          </button>
+          <button id="btn-alert" class="ctrl-btn" title="Chuyển trạng thái vận hành">
+            <span id="alert-label">Bình thường</span>
+          </button>
+          <button id="btn-settings" class="ctrl-btn" title="Tùy chỉnh giao diện & hệ thống (Phím T)">
+            <span>⚙ Giao diện</span><kbd>T</kbd>
+          </button>
+          <button id="btn-reset" class="ctrl-btn" title="Phím ESC">
+            <span>Đặt lại</span><kbd>ESC</kbd>
+          </button>
+        </div>
+      </div>
+      <button id="btn-min-controls" class="icon-btn min-btn" title="Thu nhỏ thanh điều khiển" aria-label="Thu nhỏ">–</button>
+    </nav>
+
+  </body>
+</html>

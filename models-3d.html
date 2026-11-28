@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mô Hình 3D &amp; Văn Phòng 3D AI | Nguyễn Thanh — MRT SYSTEM</title>
+  <meta name="description" content="Không gian trưng bày riêng 3 dự án Mô Hình 3D WebGL &amp; AI Agents của Nguyễn Thanh: MRT SOFT HUB (Phòng Điều Hành Công Ty Phần Mềm 3D), 3D AI Agent Office và PB3DAUTO v4.0." />
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Orbitron:wght@700;900&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+            display: ['"Orbitron"', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body {
+      background: radial-gradient(circle at 20% 10%, #0b1f3a 0%, #030712 52%, #020617 100%);
+      color: #f1f5f9;
+    }
+    .liquid-card {
+      background: linear-gradient(145deg, rgba(255,255,255,0.08) 0%, rgba(16,185,129,0.05) 45%, rgba(15,23,42,0.75) 100%);
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255,255,255,0.18);
+      backdrop-filter: blur(18px);
+      transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .liquid-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(16, 185, 129, 0.55);
+      box-shadow: 0 22px 50px -12px rgba(16, 185, 129, 0.28), inset 0 1px 0 rgba(255,255,255,0.28);
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, #34d399 0%, #38bdf8 50%, #818cf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .holo-ring {
+      animation: spinSlow 18s linear infinite;
+    }
+    @keyframes spinSlow {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body class="font-sans antialiased min-h-screen relative overflow-x-hidden">
+  <!-- Ambient Glows -->
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div class="absolute -top-36 -left-36 w-96 h-96 bg-emerald-500/15 rounded-full blur-3xl"></div>
+    <div class="absolute top-1/3 -right-32 w-96 h-96 bg-cyan-500/15 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 left-1/3 w-80 h-80 bg-indigo-500/15 rounded-full blur-3xl"></div>
+  </div>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-40 border-b border-white/10 bg-slate-950/75 backdrop-blur-xl">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-400/20 to-cyan-500/20 border border-emerald-400/40 flex items-center justify-center shadow-lg shadow-emerald-500/15">
+          <span class="font-display font-black text-xs text-emerald-300 tracking-wider">MRT</span>
+        </div>
+        <div>
+          <div class="text-sm font-bold text-white tracking-tight">Nguyễn Thanh <span class="text-emerald-400 font-mono text-xs">// 3D MODELS</span></div>
+          <div class="text-[11px] text-slate-400 font-mono">nguyenthanhazt.tech</div>
+        </div>
+      </a>
+
+      <nav class="flex items-center gap-2 sm:gap-3">
+        <a href="/" class="px-3.5 py-2 rounded-lg text-xs sm:text-sm font-medium text-slate-300 hover:text-white hover:bg-white/10 transition">
+          <i class="fa-solid fa-house mr-1.5 text-cyan-400"></i>Trang chủ
+        </a>
+        <a href="projects.html" class="px-3.5 py-2 rounded-lg text-xs sm:text-sm font-medium text-slate-300 hover:text-white hover:bg-white/10 transition">
+          <i class="fa-solid fa-layer-group mr-1.5 text-sky-400"></i>Kho Dự Án
+        </a>
+        <a href="models-3d.html" class="px-3.5 py-2 rounded-lg text-xs sm:text-sm font-semibold bg-emerald-500/20 border border-emerald-400/45 text-emerald-300 shadow-md shadow-emerald-500/10 transition">
+          <i class="fa-solid fa-cubes mr-1.5"></i>Mô Hình 3D (3)
+        </a>
+        <a href="https://github.com/nguyenthanhmrt" target="_blank" rel="noreferrer" class="hidden sm:inline-flex items-center px-3.5 py-2 rounded-lg text-xs sm:text-sm font-semibold bg-white/10 hover:bg-white/15 border border-white/15 text-white transition">
+          <i class="fa-brands fa-github mr-1.5"></i>GitHub
+        </a>
+        <a href="tel:0918499779" class="hidden md:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs font-semibold bg-gradient-to-r from-emerald-500 to-cyan-600 hover:from-emerald-400 hover:to-cyan-500 text-white shadow-md shadow-emerald-500/20 transition">
+          <i class="fa-solid fa-phone"></i> 0918.499.779
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+    <!-- Hero Banner -->
+    <section class="text-center max-w-3xl mx-auto mb-14">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-400/30 text-emerald-300 text-xs font-mono uppercase tracking-widest mb-5">
+        <i class="fa-solid fa-cubes"></i> Không gian WebGL 3D &amp; Multi-Agent AI — Nguyễn Thanh
+      </div>
+      <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight mb-4">
+        Trang Mô Hình 3D &amp; <span class="gradient-text">Văn Phòng 3D AI</span>
+      </h1>
+      <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+        Giới thiệu riêng <strong>3 dự án không gian mô hình 3D tương tác trực tuyến</strong> trên trình duyệt (Three.js / React Three Fiber), tách biệt hoàn toàn khỏi danh mục phần mềm Windows &amp; Android thông thường.
+      </p>
+
+      <!-- Category Filter Tabs -->
+      <div class="flex flex-wrap justify-center gap-2 mt-8" id="filter-tabs">
+        <button data-filter="all" class="tab-btn px-4 py-2 rounded-xl text-xs font-semibold bg-emerald-500 text-slate-950 shadow-lg shadow-emerald-500/25 transition">
+          Tất cả (3)
+        </button>
+        <button data-filter="office-3d" class="tab-btn px-4 py-2 rounded-xl text-xs font-semibold bg-white/10 text-slate-200 hover:bg-white/15 border border-white/10 transition">
+          <i class="fa-solid fa-building mr-1.5 text-emerald-400"></i>Văn Phòng 3D
+        </button>
+        <button data-filter="ai-3d" class="tab-btn px-4 py-2 rounded-xl text-xs font-semibold bg-white/10 text-slate-200 hover:bg-white/15 border border-white/10 transition">
+          <i class="fa-solid fa-robot mr-1.5 text-cyan-400"></i>3D AI Agents
+        </button>
+      </div>
+    </section>
+
+    <!-- FEATURED 3D PROJECT 1: MRT SOFT HUB -->
+    <section class="project-item mb-10" data-cat="office-3d ai-3d">
+      <div class="liquid-card rounded-3xl p-6 sm:p-8 lg:p-10 relative overflow-hidden border-emerald-400/35">
+        <div class="absolute -right-24 -top-24 w-72 h-72 rounded-full border border-emerald-400/20 holo-ring pointer-events-none"></div>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-7">
+            <div class="flex flex-wrap items-center gap-2 mb-4">
+              <span class="px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-emerald-500/15 text-emerald-300 border border-emerald-400/35">
+                ★ Dự Án 3D Mới Nhất 2026
+              </span>
+              <span class="px-2.5 py-1 rounded-full text-[11px] font-mono bg-cyan-500/15 text-cyan-300 border border-cyan-400/30">
+                19 AI Agents &amp; CIT Voice
+              </span>
+              <span class="px-2.5 py-1 rounded-full text-[11px] font-mono bg-amber-500/15 text-amber-300 border border-amber-400/30">
+                Xưởng Build Thật
+              </span>
+            </div>
+
+            <h2 class="font-display text-2xl sm:text-3xl font-black text-white tracking-wide mb-3">
+              MRT SOFT HUB <span class="text-emerald-400">// PHÒNG ĐIỀU HÀNH 3D</span>
+            </h2>
+            <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6">
+              Không gian văn phòng điều hành công ty phần mềm 3D sang trọng với <strong>6 phòng ban kính trong suốt champagne</strong> gắn bảng hiệu 2 mặt nền trắng chữ đỏ, <strong>Leader MRT + 18 AI Agents</strong> gắn 10 Model AI &amp; 19 giọng <strong>CIT Voice Studio</strong> khớp giới tính, kèm màn hình báo cáo tiến độ tùy chỉnh và quy trình 6 bước liên thông <strong>Xưởng Build Thật</strong>.
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6 text-xs sm:text-sm text-slate-200">
+              <div class="flex items-start gap-2.5 bg-white/5 border border-white/10 rounded-xl p-3">
+                <i class="fa-solid fa-building-columns text-emerald-400 mt-0.5"></i>
+                <div><strong>6 Phòng Ban Kính Trong Suốt</strong>: Gắn bảng hiệu phòng ban trực tiếp trên vách kính champagne gold sang trọng.</div>
+              </div>
+              <div class="flex items-start gap-2.5 bg-white/5 border border-white/10 rounded-xl p-3">
+                <i class="fa-solid fa-users-gear text-cyan-400 mt-0.5"></i>
+                <div><strong>19 AI Agents &amp; 19 Giọng CIT</strong>: Leader MRT + 18 nhân sự (7 nữ, 12 nam) gắn model AI &amp; giọng nói chuẩn giới tính.</div>
+              </div>
+              <div class="flex items-start gap-2.5 bg-white/5 border border-white/10 rounded-xl p-3">
+                <i class="fa-solid fa-sliders text-amber-400 mt-0.5"></i>
+                <div><strong>Báo Cáo &amp; Tùy Biến Phòng 3D</strong>: Màn hình tiến độ báo cáo tùy biến (`R`) + tùy chọn màu sắc, trang trí, thiết bị (`T`).</div>
+              </div>
+              <div class="flex items-start gap-2.5 bg-white/5 border border-white/10 rounded-xl p-3">
+                <i class="fa-solid fa-industry text-purple-400 mt-0.5"></i>
+                <div><strong>Xưởng Build Thật (Local Server)</strong>: Nhập yêu cầu để chạy đồng bộ 6 bước công ty, biên dịch Web / .EXE / .APK &amp; mở test ngay.</div>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-900/80 border border-white/10 text-emerald-300">Three.js WebGL</span>
+              <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-900/80 border border-white/10 text-emerald-300">19 AI Agents</span>
+              <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-900/80 border border-white/10 text-emerald-300">CIT Voice Studio</span>
+              <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-900/80 border border-white/10 text-emerald-300">Xưởng Build Thật</span>
+              <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-900/80 border border-white/10 text-emerald-300">Custom Decor &amp; Report</span>
+            </div>
+
+            <div class="flex flex-wrap gap-3">
+              <a href="mrt-soft-hub/" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-gradient-to-r from-emerald-500 to-cyan-600 hover:from-emerald-400 hover:to-cyan-500 text-white shadow-lg shadow-emerald-500/25 transition">
+                <i class="fa-solid fa-cube"></i> Mở Phòng Điều Hành 3D
+              </a>
+              <a href="https://github.com/nguyenthanhmrt/mrt-soft-hub" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-white/10 hover:bg-white/15 border border-white/15 text-white transition">
+                <i class="fa-brands fa-github text-cyan-400"></i> Xem GitHub (mrt-soft-hub)
+              </a>
+            </div>
+          </div>
+
+          <!-- Visual Preview Card -->
+          <div class="lg:col-span-5">
+            <div class="rounded-2xl bg-slate-950/90 border border-emerald-400/35 p-6 shadow-2xl shadow-emerald-500/15 relative overflow-hidden">
+              <div class="flex items-center justify-between text-[11px] font-mono text-emerald-400/80 pb-3 mb-4 border-b border-emerald-400/20">
+                <span>MRT SOFT HUB // COMMAND 3D</span>
+                <span class="text-emerald-400">● LIVE WEBGL</span>
+              </div>
+              <div class="flex flex-col items-center justify-center py-4">
+                <div class="relative w-32 h-32 flex items-center justify-center mb-5">
+                  <div class="absolute inset-0 rounded-full border-2 border-dashed border-emerald-400/50 holo-ring"></div>
+                  <div class="absolute inset-3 rounded-full border border-cyan-400/50" style="animation: spinSlow 10s linear infinite reverse;"></div>
+                  <div class="w-20 h-20 rounded-full bg-gradient-to-br from-emerald-400/25 via-cyan-600/25 to-indigo-600/30 border border-emerald-300/60 flex items-center justify-center shadow-[0_0_35px_rgba(16,185,129,0.45)]">
+                    <span class="font-display font-black text-base text-white tracking-widest">HUB 3D</span>
+                  </div>
+                </div>
+                <div class="w-full space-y-2 text-xs font-mono">
+                  <div class="flex justify-between px-3 py-2 rounded-lg bg-emerald-500/10 border border-emerald-400/20">
+                    <span class="text-slate-300">🏢 6 Phòng Ban Kính Champagne</span>
+                    <span class="text-emerald-400">6/6</span>
+                  </div>
+                  <div class="flex justify-between px-3 py-2 rounded-lg bg-white/5 border border-white/10">
+                    <span class="text-slate-300">🤖 Leader MRT + 18 AI Agents</span>
+                    <span class="text-cyan-300">19 VOICE</span>
+                  </div>
+                  <div class="flex justify-between px-3 py-2 rounded-lg bg-white/5 border border-white/10">
+                    <span class="text-slate-300">📊 Báo cáo (R) &amp; Decor phòng (T)</span>
+                    <span class="text-amber-300">CUSTOM</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OTHER 2 3D PROJECTS GRID -->
+    <section class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <!-- Project 2: 3D AI Agent Office -->
+      <article class="project-item liquid-card rounded-2xl p-6 sm:p-7 flex flex-col justify-between border-cyan-400/30" data-cat="office-3d ai-3d">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="px-2.5 py-1 rounded-md text-[11px] font-semibold bg-cyan-500/15 text-cyan-300 border border-cyan-400/30">
+              <i class="fa-solid fa-network-wired mr-1"></i>Dự Án 3D AI • Isometric
+            </span>
+            <span class="text-xs font-mono text-slate-400">Three.js R3F / Vitest / Socket.IO</span>
+          </div>
+          <h3 class="text-2xl font-bold text-white mb-2">3D AI Agent Office — Văn Phòng 3D AI Đa Tác Tử</h3>
+          <p class="text-sm text-slate-300 leading-relaxed mb-4">
+            Không gian văn phòng 3D Isometric mô phỏng làm việc thời gian thực của <strong>6 AI Agents</strong> (PM, Coder, Reviewer, UI/UX, QA, DevOps), kèm <strong>Màn hình điều phối lớn phía sau</strong>, bảng kiểm chuẩn <strong>Pipeline B1→B9</strong> &amp; bộ <strong>Full QA Gate 6 cổng</strong>.
+          </p>
+          <ul class="space-y-2 text-xs sm:text-sm text-slate-300 mb-5">
+            <li><i class="fa-solid fa-check text-cyan-400 mr-2"></i>Không gian 3D Isometric sàn gỗ, cửa sổ trời đêm, lounge &amp; 6 nhân vật AI low-poly tương tác</li>
+            <li><i class="fa-solid fa-check text-cyan-400 mr-2"></i>Màn hình điều phối tường sau hiển thị 6 thẻ Agent chi tiết &amp; thanh Pipeline B1→B9 realtime</li>
+            <li><i class="fa-solid fa-check text-cyan-400 mr-2"></i>Hỗ trợ PowerShell/Node Local CLI Hooks, Socket.IO, chế độ Demo Web &amp; kiểm thử Vitest</li>
+          </ul>
+          <div class="flex flex-wrap gap-2 mb-6">
+            <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-900/80 border border-white/10 text-cyan-300">Three.js R3F</span>
+            <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-900/80 border border-white/10 text-cyan-300">6 AI Agents</span>
+            <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-900/80 border border-white/10 text-cyan-300">Pipeline B1→B9</span>
+            <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-900/80 border border-white/10 text-cyan-300">Socket.IO</span>
+            <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-900/80 border border-white/10 text-cyan-300">Isometric 3D</span>
+          </div>
+        </div>
+        <div class="pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-3">
+          <a href="agent-office/" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white shadow-md shadow-cyan-500/20 transition">
+            <i class="fa-solid fa-cube"></i> Mở Văn Phòng 3D AI
+          </a>
+          <a href="https://github.com/nguyenthanhmrt/3d-ai-agent-office" target="_blank" rel="noreferrer" class="text-xs sm:text-sm font-semibold text-cyan-400 hover:text-cyan-300 transition">
+            <i class="fa-brands fa-github mr-1"></i>Xem GitHub <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
+          </a>
+        </div>
+      </article>
+
+      <!-- Project 3: PB3DAUTO -->
+      <article class="project-item liquid-card rounded-2xl p-6 sm:p-7 flex flex-col justify-between border-indigo-400/30" data-cat="office-3d ai-3d">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="px-2.5 py-1 rounded-md text-[11px] font-semibold bg-indigo-500/15 text-indigo-300 border border-indigo-400/30">
+              <i class="fa-solid fa-building mr-1"></i>Văn Phòng 3D HQ • v4.0
+            </span>
+            <span class="text-xs font-mono text-slate-400">React / Three.js / AI</span>
+          </div>
+          <h3 class="text-2xl font-bold text-white mb-2">PB3DAUTO — Phòng Kỹ Thuật Phần Mềm 3D v4.0</h3>
+          <p class="text-sm text-slate-300 leading-relaxed mb-4">
+            Ứng dụng Web 3D trực quan hóa <strong>Tòa nhà AI Tech HQ 4 tầng</strong> (T1 Android · T2 Windows · T3 Website · T4 Xuất Bản) với <strong>9 AI Agents</strong> tự động hóa trọn vòng đời từ <strong>Tư vấn tiếp nhận (B0) → Sản xuất (B1–B9) → Hội Đồng Tổng Duyệt → Bảo Hành &amp; Bảo Trì</strong>.
+          </p>
+          <ul class="space-y-2 text-xs sm:text-sm text-slate-300 mb-5">
+            <li><i class="fa-solid fa-check text-emerald-400 mr-2"></i>Tòa nhà 4 tầng PBR kính hiện đại, Isometric 3D, Zoom Vệ Tinh &amp; Cài đặt View tùy biến</li>
+            <li><i class="fa-solid fa-check text-emerald-400 mr-2"></i>Quy trình Tư vấn (B0) → 9 AI Agents → Hội Đồng Tổng Duyệt 4 thành viên &amp; Bảo Hành</li>
+            <li><i class="fa-solid fa-check text-emerald-400 mr-2"></i>Hỗ trợ Live Local Session (CLI Hooks / Demo Mode), kiểm thử Emulator &amp; đóng gói APK/EXE/Web</li>
+          </ul>
+          <div class="flex flex-wrap gap-2 mb-6">
+            <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-900/80 border border-white/10 text-indigo-300">4-Story 3D HQ</span>
+            <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-900/80 border border-white/10 text-indigo-300">9 AI Agents</span>
+            <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-900/80 border border-white/10 text-indigo-300">Tư Vấn B0 &amp; QA</span>
+            <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-900/80 border border-white/10 text-indigo-300">Zoom Vệ Tinh</span>
+            <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-900/80 border border-white/10 text-indigo-300">Live CLI Hooks</span>
+          </div>
+        </div>
+        <div class="pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-3">
+          <a href="pb3dauto/" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-400 hover:to-purple-500 text-white shadow-md shadow-indigo-500/20 transition">
+            <i class="fa-solid fa-cube"></i> Mở Tòa Nhà 3D v4.0
+          </a>
+          <a href="https://github.com/nguyenthanhmrt/PB3DAUTO" target="_blank" rel="noreferrer" class="text-xs sm:text-sm font-semibold text-cyan-400 hover:text-cyan-300 transition">
+            <i class="fa-brands fa-github mr-1"></i>Xem GitHub <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
+          </a>
+        </div>
+      </article>
+    </section>
+
+    <!-- Cross-Link Footer CTA -->
+    <section class="mt-14 liquid-card rounded-3xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div>
+        <h3 class="text-lg sm:text-xl font-bold text-white mb-1">Tìm phần mềm Windows &amp; Ứng dụng Android trong hệ sinh thái?</h3>
+        <p class="text-xs sm:text-sm text-slate-300">Các dự án phần mềm truyền thống (MRT SYSTEM, DrowsyGuard, Trợ Lý Việt, WeatherIsland...) được tách riêng tại trang Kho Dự Án.</p>
+      </div>
+      <div class="flex flex-wrap gap-3">
+        <a href="projects.html" class="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-gradient-to-r from-cyan-500 to-indigo-600 text-white shadow-lg shadow-cyan-500/20 transition">
+          <i class="fa-solid fa-layer-group mr-1.5"></i>Xem Kho Dự Án Phần Mềm
+        </a>
+        <a href="/" class="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-white/10 hover:bg-white/15 border border-white/15 text-white transition">
+          Về Trang Chủ
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="relative z-10 border-t border-white/10 py-6 text-center text-xs text-slate-400 font-mono">
+    © 2026 <strong class="text-emerald-400">Nguyễn Thanh • 0918499779</strong> — MRT SYSTEM &amp; 3D AI Spaces
+  </footer>
+
+  <script>
+    const tabs = document.querySelectorAll('.tab-btn');
+    const items = document.querySelectorAll('.project-item');
+    tabs.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const filter = btn.dataset.filter;
+        tabs.forEach((b) => {
+          const active = b === btn;
+          b.className = active
+            ? 'tab-btn px-4 py-2 rounded-xl text-xs font-semibold bg-emerald-500 text-slate-950 shadow-lg shadow-emerald-500/25 transition'
+            : 'tab-btn px-4 py-2 rounded-xl text-xs font-semibold bg-white/10 text-slate-200 hover:bg-white/15 border border-white/10 transition';
+        });
+        items.forEach((el) => {
+          const cats = (el.dataset.cat || '').split(/\s+/);
+          const match = filter === 'all' || cats.includes(filter);
+          el.classList.toggle('hidden', !match);
+        });
+      });
+    });
+  </script>
+</body>
+</html>
