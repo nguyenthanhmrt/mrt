@@ -10,8 +10,8 @@
       href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap"
       rel="stylesheet"
     />
-    <script type="module" crossorigin src="./assets/index-DPCfQ0XW.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-DicPp_Jr.css">
+    <script type="module" crossorigin src="./assets/index-DgzdTeB-.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-BF_WkZWv.css">
   </head>
   <body>
     <div id="app"></div>
@@ -335,6 +335,14 @@
         <!-- Tab 1: Colors & Theme -->
         <div id="set-tab-colors" class="set-tab-pane">
           <div class="field-block">
+            <span class="field-label">🌌 Mô hình Trung tâm Vận hành (1 chạm)</span>
+            <div class="layout-grid">
+              <button type="button" class="set-theme-btn active" data-hub-mode="software">🏢 Công ty Phần mềm</button>
+              <button type="button" class="set-theme-btn" data-hub-mode="space">🚀 Trung tâm Vũ trụ</button>
+            </div>
+          </div>
+
+          <div class="field-block">
             <span class="field-label">Chủ đề không gian &amp; giao diện</span>
             <div id="set-themes" class="set-theme-grid"></div>
           </div>
@@ -370,6 +378,26 @@
               <label class="color-card">
                 <span>Ánh sáng trần</span>
                 <input id="col-ceiling" type="color" value="#f9fcff" />
+              </label>
+            </div>
+          </div>
+
+          <div class="field-block">
+            <span class="field-label">Trang phục nhân sự &amp; Leader MRT</span>
+            <div class="layout-grid">
+              <button type="button" class="set-theme-btn active" data-outfit-style="classic">👔 Công sở tối</button>
+              <button type="button" class="set-theme-btn" data-outfit-style="light">✨ Màu sáng</button>
+              <button type="button" class="set-theme-btn" data-outfit-style="white-uniform">🤍 Đồng phục trắng</button>
+              <button type="button" class="set-theme-btn" data-outfit-style="pastel-dept">🎨 Pastel phòng</button>
+            </div>
+            <div class="color-grid">
+              <label class="color-card">
+                <span>Áo / Vest</span>
+                <input id="col-outfit-shirt" type="color" value="#f8fafc" />
+              </label>
+              <label class="color-card">
+                <span>Quần</span>
+                <input id="col-outfit-pants" type="color" value="#cbd5e1" />
               </label>
             </div>
           </div>
@@ -423,6 +451,52 @@
                 <input id="chk-bubbles" type="checkbox" checked />
                 <span>Bong bóng thoại 3D</span>
               </label>
+            </div>
+          </div>
+
+          <div class="field-block">
+            <span class="field-label">🖼 Panel khẩu hiệu treo tường (5 bảng — sửa trực tiếp)</span>
+            <div class="layout-grid">
+              <button type="button" class="set-theme-btn active" data-wp-preset="service">🤝 Dịch vụ &amp; CSKH</button>
+              <button type="button" class="set-theme-btn" data-wp-preset="tech">💻 Công nghệ &amp; AI</button>
+              <button type="button" class="set-theme-btn" data-wp-preset="culture">🏆 Văn hóa Đội ngũ</button>
+              <button type="button" class="set-theme-btn" data-wp-preset="sales">🚀 Tăng trưởng</button>
+            </div>
+            <div class="layout-grid">
+              <button type="button" class="set-theme-btn active" data-wp-style="luxury-dark">🌌 Đêm sang trọng</button>
+              <button type="button" class="set-theme-btn" data-wp-style="ivory-gold">🤍 Trắng Kem Gold</button>
+              <button type="button" class="set-theme-btn" data-wp-style="emerald-vip">🌿 Ngọc Lục Bảo</button>
+              <button type="button" class="set-theme-btn" data-wp-style="crimson-exec">🔴 Đỏ Trắng VIP</button>
+            </div>
+            <label class="field-block">
+              <span class="field-label">Tiêu đề chuyên mục trên các panel</span>
+              <input id="wp-category" type="text" maxlength="64" value="2. DỊCH VỤ, TƯ VẤN & CHĂM SÓC KHÁCH HÀNG" placeholder="VD: 2. Dịch vụ, Tư vấn & Chăm sóc khách hàng" />
+            </label>
+            <div class="wp-editor-list">
+              <label class="wp-input-row">
+                <span class="wp-idx-badge">01 Trái</span>
+                <input id="wp-text-0" type="text" maxlength="110" value="Tận tâm từ những điều nhỏ nhất." />
+              </label>
+              <label class="wp-input-row">
+                <span class="wp-idx-badge">02 Phải</span>
+                <input id="wp-text-1" type="text" maxlength="110" value="Đồng hành cùng sự thịnh vượng của bạn." />
+              </label>
+              <label class="wp-input-row">
+                <span class="wp-idx-badge">03 Sau-T</span>
+                <input id="wp-text-2" type="text" maxlength="110" value="Trao niềm tin, nhận giá trị." />
+              </label>
+              <label class="wp-input-row">
+                <span class="wp-idx-badge">04 Giữa</span>
+                <input id="wp-text-3" type="text" maxlength="110" value="Luôn lắng nghe, luôn thấu hiểu, luôn đồng hành." />
+              </label>
+              <label class="wp-input-row">
+                <span class="wp-idx-badge">05 Sau-P</span>
+                <input id="wp-text-4" type="text" maxlength="110" value="Sự hài lòng của bạn là thước đo thành công của chúng tôi." />
+              </label>
+            </div>
+            <div class="wp-actions-row">
+              <button id="btn-cam-wall-panels" type="button" class="mini-ctrl-btn send-btn">🎥 Xem tường Panel (3D)</button>
+              <button id="btn-wp-reset-service" type="button" class="mini-ctrl-btn">↺ Mẫu Dịch vụ CSKH</button>
             </div>
           </div>
         </div>
@@ -504,13 +578,89 @@
         <!-- Tab 5: Customizable 3D Operations Board (LED Wall) -->
         <div id="set-tab-opsboard" class="set-tab-pane hidden">
           <div class="field-block">
+            <span class="field-label">Cài nhanh 1 chạm (Presets Màn hình LED)</span>
+            <div class="layout-grid">
+              <button type="button" class="set-theme-btn" data-ops-preset="noc">⚡ Vận hành NOC</button>
+              <button type="button" class="set-theme-btn" data-ops-preset="vip-meeting">🏛 Họp Trắng Đỏ</button>
+              <button type="button" class="set-theme-btn" data-ops-preset="kpi-gold">📊 KPI Hoàng Kim</button>
+              <button type="button" class="set-theme-btn" data-ops-preset="slide-cinema">🖼 Chiếu Slide Rộng</button>
+            </div>
+          </div>
+
+          <div class="field-block">
+            <span class="field-label">Kiểu màn hình 3D &amp; Kích thước</span>
+            <div class="scale-row">
+              <button type="button" class="mini-ctrl-btn scale-btn active" data-ops-style="flat">Phẳng 3 tấm</button>
+              <button type="button" class="mini-ctrl-btn scale-btn" data-ops-style="curved">Cong 3D</button>
+              <button type="button" class="mini-ctrl-btn scale-btn" data-ops-style="cinema">Rộng 1 tấm</button>
+            </div>
+            <div class="scale-row">
+              <button type="button" class="mini-ctrl-btn scale-btn" data-ops-wall-scale="0.88">Nhỏ 88%</button>
+              <button type="button" class="mini-ctrl-btn scale-btn active" data-ops-wall-scale="1">Chuẩn 100%</button>
+              <button type="button" class="mini-ctrl-btn scale-btn" data-ops-wall-scale="1.12">Lớn 112%</button>
+            </div>
+          </div>
+
+          <div class="field-block">
             <span class="field-label">Giao diện Bảng Vận Hành 3D</span>
             <div id="ops-themes" class="layout-grid"></div>
           </div>
 
           <div class="field-block">
+            <span class="field-label">Màu sắc tự chọn cho Màn hình LED &amp; Khung</span>
+            <label class="plat-check">
+              <input id="chk-ops-custom-colors" type="checkbox" />
+              <span>Dùng bảng màu LED tự chọn</span>
+            </label>
+            <div class="color-grid">
+              <label class="color-card">
+                <span>Nền LED</span>
+                <input id="col-ops-bg" type="color" value="#030812" />
+              </label>
+              <label class="color-card">
+                <span>Màu nhấn LED</span>
+                <input id="col-ops-accent" type="color" value="#38bdf8" />
+              </label>
+              <label class="color-card">
+                <span>Màu chữ LED</span>
+                <input id="col-ops-text" type="color" value="#f8fafc" />
+              </label>
+              <label class="color-card">
+                <span>Viền khung 3D</span>
+                <input id="col-ops-frame" type="color" value="#11151d" />
+              </label>
+            </div>
+          </div>
+
+          <div class="field-block">
             <span class="field-label">Chế độ hiển thị nội dung chính</span>
             <div id="ops-modes" class="layout-grid"></div>
+          </div>
+
+          <div class="field-block">
+            <span class="field-label">Trình chiếu Ảnh / Slide lên Màn hình LED</span>
+            <input id="ops-cfg-image-file" type="file" accept="image/*" class="hidden" />
+            <div class="rep-chip-row">
+              <button id="btn-ops-upload-img" type="button" class="mini-ctrl-btn send-btn">📁 Tải ảnh lên LED</button>
+              <button id="btn-ops-clear-img" type="button" class="mini-ctrl-btn">✕ Xóa ảnh</button>
+              <select id="ops-cfg-image-fit" class="voice-mini-select" title="Cách canh ảnh trên LED">
+                <option value="contain">Vừa khung</option>
+                <option value="cover">Phủ đầy</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field-block">
+            <span class="field-label">Biển LED Tên Công Ty (Phía trên)</span>
+            <label class="plat-check">
+              <input id="chk-ops-brandsign" type="checkbox" checked />
+              <span>Hiện biển tên phía trên</span>
+            </label>
+            <div class="scale-row">
+              <button type="button" class="mini-ctrl-btn scale-btn active" data-ops-brand-style="neon">Neon</button>
+              <button type="button" class="mini-ctrl-btn scale-btn" data-ops-brand-style="white-red">Trắng Đỏ</button>
+              <button type="button" class="mini-ctrl-btn scale-btn" data-ops-brand-style="gold">Hoàng Kim</button>
+            </div>
           </div>
 
           <label class="field-block">
@@ -527,6 +677,20 @@
             <span class="field-label">Nội dung Nghị sự / Thông báo họp (mỗi dòng 1 mục)</span>
             <textarea id="ops-cfg-agenda" class="ops-textarea" rows="3" placeholder="1. Rà soát tiến độ 6 phòng ban..."></textarea>
           </label>
+
+          <div class="field-block">
+            <div class="settings-toggles">
+              <label class="plat-check">
+                <input id="chk-ops-clock" type="checkbox" checked />
+                <span>Đồng hồ số trên LED</span>
+              </label>
+              <label class="plat-check">
+                <input id="chk-ops-marquee" type="checkbox" />
+                <span>Chữ chạy dưới đáy</span>
+              </label>
+            </div>
+            <input id="ops-cfg-marquee" type="text" maxlength="160" placeholder="Nội dung chữ chạy dưới đáy màn hình LED..." />
+          </div>
 
           <div class="rep-custom-grid">
             <label class="field-block">
@@ -859,6 +1023,94 @@
       </div>
     </aside>
 
+    <!-- Draggable, Minimizable AI Model Selector & Optimal Advisor Window -->
+    <section id="ai-models-window" class="aim-window glass-panel hidden" aria-label="Tùy chọn & Đề xuất Model AI tối ưu">
+      <div class="aim-header">
+        <div class="aim-title-wrap">
+          <span class="aim-badge">🧠 MODEL AI</span>
+          <span class="aim-title">Tùy chọn &amp; Đề xuất Tối ưu</span>
+        </div>
+        <div class="win-actions">
+          <button id="btn-min-aim" class="icon-btn min-btn" title="Thu nhỏ bảng Model AI" aria-label="Thu nhỏ">–</button>
+          <button id="btn-close-aim" class="icon-btn" title="Đóng bảng Model AI" aria-label="Đóng">✕</button>
+        </div>
+      </div>
+
+      <div class="aim-tabs">
+        <button type="button" class="set-tab-btn active" data-aim-tab="optimal">★ Đề xuất tối ưu</button>
+        <button type="button" class="set-tab-btn" data-aim-tab="depts">🏢 Theo phòng</button>
+        <button type="button" class="set-tab-btn" data-aim-tab="catalog">📋 Danh sách Model &amp; 19 AI</button>
+      </div>
+
+      <div class="aim-body">
+        <!-- Tab 1: Optimal Advisor & Presets -->
+        <div id="aim-tab-optimal" class="aim-tab-pane">
+          <div id="aim-fleet-score" class="aim-score-card"></div>
+
+          <div class="field-block">
+            <span class="field-label">Chọn mục tiêu của bạn để hệ thống đề xuất cấu hình tối ưu</span>
+            <div class="layout-grid">
+              <button type="button" class="set-theme-btn active" data-aim-goal="complex-app">📱 App Đa Nền Tảng</button>
+              <button type="button" class="set-theme-btn" data-aim-goal="single-gemini">✨ Chỉ dùng Gemini</button>
+              <button type="button" class="set-theme-btn" data-aim-goal="budget-247">⚡ Nhanh &amp; Tiết kiệm</button>
+              <button type="button" class="set-theme-btn" data-aim-goal="security-perf">🛡 Code &amp; Bảo mật</button>
+            </div>
+            <div id="aim-goal-advice" class="aim-goal-advice"></div>
+          </div>
+
+          <div class="field-block">
+            <span class="field-label">5 Gói Cấu Hình Đề Xuất (Áp dụng 1 chạm)</span>
+            <div id="aim-profiles-list" class="aim-profiles-list"></div>
+          </div>
+        </div>
+
+        <!-- Tab 2: Per-Department & Bulk Assignment -->
+        <div id="aim-tab-depts" class="aim-tab-pane hidden">
+          <div class="aim-bulk-card">
+            <span class="field-label">Áp dụng nhanh 1 Model cho toàn bộ 19 AI Agent</span>
+            <div class="voice-url-row">
+              <select id="aim-bulk-model" title="Chọn Model AI chung"></select>
+              <button id="btn-aim-apply-all" type="button" class="mini-ctrl-btn send-btn">Áp dụng cả 19</button>
+            </div>
+          </div>
+          <div id="aim-dept-list" class="aim-dept-list"></div>
+        </div>
+
+        <!-- Tab 3: AI Model Benchmarks, Custom Add & 19 Individual Agents -->
+        <div id="aim-tab-catalog" class="aim-tab-pane hidden">
+          <div class="field-block">
+            <span class="field-label">➕ Thêm Model AI mới tùy chỉnh</span>
+            <form id="aim-custom-model-form" class="aim-custom-form">
+              <input id="aim-new-model-name" type="text" maxlength="40" placeholder="Tên Model (VD: Claude 5, GPT-6, Ollama...)" required />
+              <input id="aim-new-model-provider" type="text" maxlength="24" placeholder="Hãng (VD: OpenAI)" />
+              <button id="btn-aim-add-model" type="submit" class="mini-ctrl-btn send-btn">+ Thêm</button>
+            </form>
+          </div>
+          <div class="field-block">
+            <span class="field-label">So sánh nhanh Model AI (<span id="aim-model-count">28</span> model)</span>
+            <div class="aim-filter-row">
+              <button type="button" class="aim-filter-chip active" data-aim-filter="all">Tất cả</button>
+              <button type="button" class="aim-filter-chip" data-aim-filter="new">★ Mới nhất</button>
+              <button type="button" class="aim-filter-chip" data-aim-filter="Google">Google</button>
+              <button type="button" class="aim-filter-chip" data-aim-filter="Anthropic">Anthropic</button>
+              <button type="button" class="aim-filter-chip" data-aim-filter="OpenAI">OpenAI</button>
+              <button type="button" class="aim-filter-chip" data-aim-filter="other">Khác</button>
+            </div>
+            <div id="aim-catalog-grid" class="aim-catalog-grid"></div>
+          </div>
+          <div class="field-block">
+            <span class="field-label">Chỉnh từng nhân sự AI (19 Agent)</span>
+            <div id="aim-agents-list" class="aim-agents-list"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="aim-footer">
+        <button id="btn-aim-reset" type="button" class="mini-ctrl-btn">↺ Khôi phục mặc định</button>
+        <span id="aim-active-summary" class="aim-summary-txt">Điểm tối ưu: --/100</span>
+      </div>
+    </section>
+
     <!-- Live 1-line Vietnamese Agent Exchange Ticker (Draggable & Toggleable) -->
     <div id="agent-ticker" class="agent-ticker glass-panel" role="button" tabindex="0" title="Kéo để di chuyển • Bấm để mở luồng trao đổi AI">
       <span class="drag-grip" title="Kéo để di chuyển bảng AI COMMS">⠿</span>
@@ -907,8 +1159,11 @@
           <button id="btn-open-factory" class="ctrl-btn" title="Mở Xưởng build thật ra ổ cứng & đẩy GitHub">
             <span>Xưởng Thật</span>
           </button>
-          <button id="btn-voice" class="ctrl-btn" title="Kết nối giọng nói AI tiếng Việt CIT Voice (Phím V)">
+          <button id="btn-voice" class="ctrl-btn" title="Kết nối giọng nói AI tiếng Việt CIT Voice / Gemini (Phím V)">
             <span>🔊 Giọng nói</span><kbd>V</kbd>
+          </button>
+          <button id="btn-ai-models" class="ctrl-btn" title="Tùy chọn Model AI &amp; Đề xuất cấu hình tối ưu (Phím A)">
+            <span>🧠 Model AI</span><kbd>A</kbd>
           </button>
           <button id="btn-report" class="ctrl-btn" title="Mở màn hình hiển thị tiến độ báo cáo tùy chỉnh (Phím R)">
             <span>📊 Báo cáo</span><kbd>R</kbd>
@@ -936,6 +1191,9 @@
           </button>
           <button id="btn-meeting-mode" class="ctrl-btn" title="Chuyển nhanh Bàn làm việc ↔ Phòng họp (Phím B)">
             <span id="meeting-mode-label">🪑 Bàn họp</span><kbd>B</kbd>
+          </button>
+          <button id="btn-space-mode" class="ctrl-btn" title="Chuyển đổi mô hình Trung tâm Phần mềm ↔ Trung tâm Vũ trụ (Phím U)">
+            <span id="space-mode-label">🚀 Vũ trụ</span><kbd>U</kbd>
           </button>
           <button id="btn-ops-board" class="ctrl-btn" title="Mở Tùy chỉnh Bảng Vận Hành 3D (Phím O)">
             <span>📺 Bảng VH</span><kbd>O</kbd>
