@@ -10,8 +10,8 @@
       href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap"
       rel="stylesheet"
     />
-    <script type="module" crossorigin src="./assets/index-LbtnzbCm.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-CnCBFzzm.css">
+    <script type="module" crossorigin src="./assets/index-DPCfQ0XW.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-DicPp_Jr.css">
   </head>
   <body>
     <div id="app"></div>
@@ -224,7 +224,8 @@
       </div>
       <div class="inspector-body">
         <div class="inspector-preview-wrap">
-          <canvas id="inspector-preview" width="480" height="270"></canvas>
+          <canvas id="inspector-preview" width="480" height="270" title="Bấm để phóng to xem chi tiết HD"></canvas>
+          <button id="btn-inspector-zoom" type="button" class="preview-zoom-btn" title="Phóng to toàn màn hình để xem chi tiết (Phím Z)">🔍 Phóng to HD</button>
         </div>
         <div id="inspector-metrics" class="metrics-grid"></div>
         <div id="inspector-desc" class="inspector-desc"></div>
@@ -327,6 +328,8 @@
           <button type="button" class="set-tab-btn active" data-set-tab="colors">🎨 Màu sắc</button>
           <button type="button" class="set-tab-btn" data-set-tab="decor">🪴 Trang trí</button>
           <button type="button" class="set-tab-btn" data-set-tab="equip">🖥 Thiết bị</button>
+          <button type="button" class="set-tab-btn" data-set-tab="layout">🪑 Bàn họp</button>
+          <button type="button" class="set-tab-btn" data-set-tab="opsboard">📺 Bảng VH</button>
         </div>
 
         <!-- Tab 1: Colors & Theme -->
@@ -465,6 +468,113 @@
           </div>
         </div>
 
+        <!-- Tab 4: Room Layout (Workstation <-> Meeting Room) -->
+        <div id="set-tab-layout" class="set-tab-pane hidden">
+          <div class="field-block">
+            <span class="field-label">Bố trí bàn ghế &amp; phòng họp (18 nhân sự + Leader MRT)</span>
+            <div id="layout-presets" class="layout-grid">
+              <button type="button" class="set-theme-btn active" data-room-layout="work">💻 Làm việc (6 Phòng)</button>
+              <button type="button" class="set-theme-btn" data-room-layout="boardroom">🏛 Họp Hội Đồng</button>
+              <button type="button" class="set-theme-btn" data-room-layout="u_shape">📐 Họp Chữ U</button>
+              <button type="button" class="set-theme-btn" data-room-layout="roundtable">⭕ Họp Bàn Tròn</button>
+            </div>
+          </div>
+
+          <div class="field-block">
+            <span class="field-label">Tùy chọn phòng họp &amp; chuyển đổi</span>
+            <div class="settings-toggles">
+              <label class="plat-check">
+                <input id="chk-meeting-props" type="checkbox" checked />
+                <span>Laptop, Micro &amp; Hologram họp</span>
+              </label>
+              <label class="plat-check">
+                <input id="chk-auto-meeting-board" type="checkbox" checked />
+                <span>Tự chuyển Bảng VH sang Họp</span>
+              </label>
+              <label class="plat-check">
+                <input id="chk-auto-focus-layout" type="checkbox" checked />
+                <span>Tự xoay camera khi đổi bố trí</span>
+              </label>
+            </div>
+          </div>
+
+          <button id="btn-cam-meeting" type="button" class="mini-ctrl-btn send-btn">🎥 Xem góc toàn cảnh Phòng Họp</button>
+        </div>
+
+        <!-- Tab 5: Customizable 3D Operations Board (LED Wall) -->
+        <div id="set-tab-opsboard" class="set-tab-pane hidden">
+          <div class="field-block">
+            <span class="field-label">Giao diện Bảng Vận Hành 3D</span>
+            <div id="ops-themes" class="layout-grid"></div>
+          </div>
+
+          <div class="field-block">
+            <span class="field-label">Chế độ hiển thị nội dung chính</span>
+            <div id="ops-modes" class="layout-grid"></div>
+          </div>
+
+          <label class="field-block">
+            <span class="field-label">Tiêu đề tùy chỉnh trên Bảng Vận Hành (để trống = theo dự án)</span>
+            <input id="ops-cfg-title" type="text" maxlength="42" placeholder="VD: PHIÊN HỌP CHIẾN LƯỢC Q4 // MRT" />
+          </label>
+
+          <label class="field-block">
+            <span class="field-label">Khẩu hiệu / Trạng thái góc phải trên bảng</span>
+            <input id="ops-cfg-subtitle" type="text" maxlength="60" placeholder="VD: MỤC TIÊU TUẦN: HOÀN THÀNH ANDROID + WINDOWS" />
+          </label>
+
+          <label class="field-block">
+            <span class="field-label">Nội dung Nghị sự / Thông báo họp (mỗi dòng 1 mục)</span>
+            <textarea id="ops-cfg-agenda" class="ops-textarea" rows="3" placeholder="1. Rà soát tiến độ 6 phòng ban..."></textarea>
+          </label>
+
+          <div class="rep-custom-grid">
+            <label class="field-block">
+              <span class="field-label">Độ sáng LED: <strong id="ops-cfg-brightness-val">100%</strong></span>
+              <input id="ops-cfg-brightness" type="range" min="60" max="160" value="100" />
+            </label>
+            <div class="field-block">
+              <span class="field-label">Cỡ chữ bảng</span>
+              <div class="scale-row">
+                <button type="button" class="mini-ctrl-btn scale-btn" data-ops-scale="0.9">Nhỏ</button>
+                <button type="button" class="mini-ctrl-btn scale-btn active" data-ops-scale="1">Chuẩn</button>
+                <button type="button" class="mini-ctrl-btn scale-btn" data-ops-scale="1.15">Lớn</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="field-block">
+            <span class="field-label">Bật / tắt khung trên Bảng Vận Hành</span>
+            <div class="settings-toggles">
+              <label class="plat-check">
+                <input id="chk-ops-left" type="checkbox" checked />
+                <span>Màn hình LED Trái</span>
+              </label>
+              <label class="plat-check">
+                <input id="chk-ops-right" type="checkbox" checked />
+                <span>Màn hình LED Phải</span>
+              </label>
+              <label class="plat-check">
+                <input id="chk-ops-radar" type="checkbox" checked />
+                <span>Radar 6 bộ phận</span>
+              </label>
+              <label class="plat-check">
+                <input id="chk-ops-aifeed" type="checkbox" checked />
+                <span>Luồng trao đổi AI</span>
+              </label>
+              <label class="plat-check">
+                <input id="chk-ops-deptgrid" type="checkbox" checked />
+                <span>6 Thẻ phòng ban</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="rep-chip-row">
+            <button id="btn-cam-opsboard" type="button" class="mini-ctrl-btn send-btn">🎥 Phóng to Bảng 3D</button>
+            <button id="btn-ops-zoom-hd" type="button" class="mini-ctrl-btn">🔍 Xem HD Toàn Màn Hình</button>
+          </div>
+        </div>
+
         <div class="settings-actions">
           <button id="btn-return-podium" type="button" class="mini-ctrl-btn">Gọi MRT về bục chỉ huy</button>
           <button id="btn-reset-settings" type="button" class="mini-ctrl-btn">Khôi phục mặc định</button>
@@ -472,25 +582,62 @@
       </div>
     </section>
 
-    <!-- Draggable, Minimizable Floating CIT Voice Studio Window -->
-    <section id="voice-window" class="voice-window glass-panel hidden" aria-label="Kết nối CIT Voice Studio">
+    <!-- Draggable, Minimizable Floating AI Voice Window (CIT Voice • Gemini TTS • Web Speech) -->
+    <section id="voice-window" class="voice-window glass-panel hidden" aria-label="Hệ thống Giọng nói AI">
       <div class="voice-header">
         <div class="voice-title-wrap">
-          <span class="voice-badge">🔊 CIT VOICE</span>
-          <span class="voice-title">Kết nối CIT Voice Studio</span>
+          <span class="voice-badge">🔊 AI VOICE</span>
+          <span class="voice-title">Giọng nói AI (CIT • Gemini • Web)</span>
         </div>
         <div class="win-actions">
-          <button id="btn-min-voice" class="icon-btn min-btn" title="Thu nhỏ CIT Voice" aria-label="Thu nhỏ">–</button>
-          <button id="btn-close-voice" class="icon-btn" title="Đóng CIT Voice" aria-label="Đóng">✕</button>
+          <button id="btn-min-voice" class="icon-btn min-btn" title="Thu nhỏ cửa sổ Giọng nói" aria-label="Thu nhỏ">–</button>
+          <button id="btn-close-voice" class="icon-btn" title="Đóng Giọng nói" aria-label="Đóng">✕</button>
         </div>
       </div>
       <div class="voice-body">
+        <div class="voice-engine-row">
+          <span class="field-label">Động cơ đọc giọng AI</span>
+          <select id="voice-engine-mode" title="Chọn nguồn đọc giọng nói">
+            <option value="auto">⚡ Tự động (CIT → Gemini → Web)</option>
+            <option value="gemini">✨ Model Gemini TTS (24 kHz)</option>
+            <option value="cit">🎙 CIT Voice Studio (48 kHz)</option>
+            <option value="browser">🌐 Giọng Nam/Nữ Trình Duyệt (Web)</option>
+          </select>
+        </div>
+
+        <div id="voice-gemini-card" class="voice-gemini-card">
+          <div class="voice-conn-head">
+            <span class="detail-tag">✨ CẤU HÌNH GEMINI TTS</span>
+            <select id="voice-gemini-model" class="voice-mini-select" title="Chọn Model Gemini TTS">
+              <option value="gemini-2.5-flash-preview-tts">Gemini 2.5 Flash TTS</option>
+              <option value="gemini-2.5-pro-preview-tts">Gemini 2.5 Pro TTS</option>
+            </select>
+          </div>
+          <div class="voice-url-row">
+            <input
+              id="voice-gemini-key"
+              type="password"
+              autocomplete="off"
+              placeholder="Dán Gemini API Key (chỉ lưu cục bộ trình duyệt)..."
+            />
+            <button id="btn-voice-save-gemini" type="button" class="mini-ctrl-btn send-btn">Lưu</button>
+          </div>
+        </div>
+
         <div class="voice-conn-card">
           <div class="voice-conn-head">
             <span id="voice-status-badge" class="voice-status-badge offline">○ CHƯA BẬT</span>
             <span id="voice-dir-path" class="voice-dir-path">E:\New\SOFT\cit voice</span>
           </div>
           <div id="voice-engine-info" class="voice-engine-info">Đang kiểm tra trạng thái CIT Voice Studio...</div>
+          <div class="voice-url-row">
+            <input
+              id="voice-remote-url"
+              type="url"
+              placeholder="URL CIT Voice (trống = Local, hoặc Tunnel https://...)"
+            />
+            <button id="btn-voice-connect-url" type="button" class="mini-ctrl-btn">Kết nối</button>
+          </div>
           <div class="voice-server-actions">
             <button id="btn-voice-start" type="button" class="mini-ctrl-btn send-btn">▶ Bật CIT Voice</button>
             <button id="btn-voice-stop" type="button" class="mini-ctrl-btn">■ Tắt</button>
@@ -539,7 +686,7 @@
 
         <div id="voice-speaking-status" class="voice-speaking-status">Sẵn sàng kết nối giọng nói tiếng Việt cục bộ.</div>
         <audio id="voice-audio-player" class="voice-audio-player" controls></audio>
-        <div class="voice-ai-note">Giọng đọc được tạo bằng AI • CIT Voice Studio (E:\New\SOFT\cit voice)</div>
+        <div class="voice-ai-note">Giọng đọc được tạo bằng AI • CIT Voice Studio / Model Gemini TTS / Web Speech API</div>
       </div>
     </section>
 
@@ -712,16 +859,22 @@
       </div>
     </aside>
 
-    <!-- Live 1-line Vietnamese Agent Exchange Ticker -->
-    <div id="agent-ticker" class="agent-ticker glass-panel" role="button" tabindex="0" title="Bấm để mở luồng trao đổi giữa các AI Agent">
+    <!-- Live 1-line Vietnamese Agent Exchange Ticker (Draggable & Toggleable) -->
+    <div id="agent-ticker" class="agent-ticker glass-panel" role="button" tabindex="0" title="Kéo để di chuyển • Bấm để mở luồng trao đổi AI">
+      <span class="drag-grip" title="Kéo để di chuyển bảng AI COMMS">⠿</span>
       <span class="ticker-badge">AI COMMS</span>
       <span id="agent-ticker-text" class="ticker-text">Đang đồng bộ trao đổi giữa 18 AI Agent...</span>
-      <button id="btn-close-ticker" class="ticker-close" title="Ẩn thanh trao đổi nhanh" aria-label="Đóng">✕</button>
+      <button id="btn-close-ticker" class="ticker-close" title="Ẩn thanh AI COMMS (bật lại bằng nút 💬 AI Comms)" aria-label="Ẩn">✕</button>
     </div>
 
-    <!-- Bottom floating control bar -->
+    <!-- Bottom floating control bar (Horizontal / Vertical + Draggable) -->
     <nav class="hud-controls glass-panel" aria-label="Điều khiển góc nhìn và ánh sáng">
-      <span class="ctrl-min-label">Điều khiển</span>
+      <div class="ctrl-bar-head">
+        <span id="ctrl-drag-handle" class="drag-grip" title="Kéo để di chuyển bảng điều khiển">⠿</span>
+        <span class="ctrl-min-label">Điều khiển</span>
+        <button id="btn-orient-controls" type="button" class="icon-btn" title="Chuyển bảng điều khiển thành hàng dọc" aria-label="Đổi hướng bảng điều khiển">⇅</button>
+        <button id="btn-min-controls" class="icon-btn min-btn" title="Thu nhỏ thanh điều khiển" aria-label="Thu nhỏ">–</button>
+      </div>
       <div class="ctrl-groups-wrap">
         <div class="ctrl-group">
           <button class="ctrl-btn active" data-preset="overview" title="Phím 1">
@@ -747,6 +900,9 @@
           </button>
           <button id="btn-open-agents" class="ctrl-btn" title="Xem trao đổi giữa các AI Agent">
             <span>Trao đổi AI</span>
+          </button>
+          <button id="btn-toggle-ticker" class="ctrl-btn active" title="Ẩn / Hiện thanh AI COMMS">
+            <span>💬 AI Comms</span>
           </button>
           <button id="btn-open-factory" class="ctrl-btn" title="Mở Xưởng build thật ra ổ cứng & đẩy GitHub">
             <span>Xưởng Thật</span>
@@ -778,13 +934,52 @@
           <button id="btn-settings" class="ctrl-btn" title="Tùy chỉnh giao diện & hệ thống (Phím T)">
             <span>⚙ Giao diện</span><kbd>T</kbd>
           </button>
+          <button id="btn-meeting-mode" class="ctrl-btn" title="Chuyển nhanh Bàn làm việc ↔ Phòng họp (Phím B)">
+            <span id="meeting-mode-label">🪑 Bàn họp</span><kbd>B</kbd>
+          </button>
+          <button id="btn-ops-board" class="ctrl-btn" title="Mở Tùy chỉnh Bảng Vận Hành 3D (Phím O)">
+            <span>📺 Bảng VH</span><kbd>O</kbd>
+          </button>
+          <button id="btn-zoom-screen" class="ctrl-btn" title="Phóng to màn hình đang xem ở chế độ HD (Phím Z)">
+            <span>🔍 Zoom màn hình</span><kbd>Z</kbd>
+          </button>
           <button id="btn-reset" class="ctrl-btn" title="Phím ESC">
             <span>Đặt lại</span><kbd>ESC</kbd>
           </button>
         </div>
       </div>
-      <button id="btn-min-controls" class="icon-btn min-btn" title="Thu nhỏ thanh điều khiển" aria-label="Thu nhỏ">–</button>
     </nav>
+
+    <!-- Full-Screen Live HD Screen Zoom Modal -->
+    <section id="screen-zoom-modal" class="screen-zoom-modal hidden" role="dialog" aria-modal="true" aria-label="Phóng to màn hình xem chi tiết">
+      <div class="zoom-card glass-panel">
+        <div class="zoom-header">
+          <div class="zoom-title-group">
+            <span class="zoom-badge">🔍 HD ZOOM</span>
+            <div>
+              <h2 id="zoom-title">Màn hình chi tiết</h2>
+              <p id="zoom-subtitle" class="zoom-subtitle">1920×675px</p>
+            </div>
+          </div>
+          <div id="zoom-switcher" class="zoom-switcher"></div>
+          <div class="zoom-toolbar">
+            <button id="btn-zoom-out" type="button" class="mini-ctrl-btn" title="Thu nhỏ">−</button>
+            <span id="zoom-level-label" class="zoom-level-pill">100%</span>
+            <button id="btn-zoom-in" type="button" class="mini-ctrl-btn" title="Phóng to">+</button>
+            <button id="btn-zoom-fit" type="button" class="mini-ctrl-btn" title="Đưa về vừa khung (100%)">Vừa khung</button>
+            <button id="btn-zoom-200" type="button" class="mini-ctrl-btn" title="Phóng to 200%">200%</button>
+            <button id="btn-zoom-snapshot" type="button" class="mini-ctrl-btn send-btn" title="Tải ảnh chụp HD">📷 Lưu ảnh</button>
+            <button id="btn-zoom-close" type="button" class="icon-btn" title="Đóng (ESC)" aria-label="Đóng">✕</button>
+          </div>
+        </div>
+        <div id="zoom-stage" class="zoom-stage">
+          <canvas id="zoom-canvas"></canvas>
+        </div>
+        <div class="zoom-footer-hint">
+          Cuộn chuột để phóng to / thu nhỏ (75%–350%) • Kéo chuột để di chuyển vùng xem • Nhấn đúp để bật/tắt 200% • Nhấn ESC để đóng
+        </div>
+      </div>
+    </section>
 
   </body>
 </html>
